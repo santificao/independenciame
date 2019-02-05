@@ -1,0 +1,382 @@
+/*
+font-family: 'Oswald', sans-serif;
+font-family: 'PT Sans', sans-serif;
+*/
+
+:root {
+    --colorPrincipal: rgb(19, 54, 53);
+    --colorPrincipalClaro: rgb(137, 216, 63);
+    --colorSecundario: rgb(200, 255, 200);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cursiva {
+    font-style: italic;
+}
+
+.negrita {
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 2em;
+    padding: 0 0 1.5em;
+    color: #000;
+}
+
+
+/*HEADER*/
+
+.contenido {
+    width: 90%;
+    margin: auto;
+}
+
+.barra {
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+}
+
+.logo {
+    color: var(--colorPrincipal);
+    text-transform: uppercase;
+    padding: .4rem;
+    border-radius: 10px;
+    font-family: 'Schoolbell', cursive;
+}
+
+.logo span {
+    text-transform: lowercase;
+    color: var(--colorPrincipalClaro);
+}
+
+.menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 15vh;
+    z-index: 5;
+    width: 100%;
+    background-color: rgba(124, 120, 120, 0.7);
+}
+
+.menu li {
+    padding: 1.1rem;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.menu li a:hover {
+    color: var(--colorPrincipal);
+}
+
+.menu-movil {
+    color: var(--colorPrincipal);
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+@media (min-width: 780px) {
+    .contenido {
+        width: 90%;
+        max-width: 1000px;
+    }
+    .menu {
+        position: inherit;
+        background-color: #fff;
+        display: flex!important;
+        justify-content: space-between;
+    }
+    .menu li {
+        padding: 0;
+        margin: .2rem;
+    }
+    .menu li a {
+        padding: .5rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all .3s ease;
+        color: var(--colorPrincipal);
+    }
+    .menu li a:hover {
+        color: #fff;
+        background-color: var(--colorPrincipalClaro);
+    }
+    .menu-movil {
+        display: none;
+    }
+}
+
+
+/*MAIN*/
+
+
+/**Descripción*/
+
+main {
+    font-family: 'PT Sans', sans-serif;
+}
+
+main .descripcion {
+    position: relative;
+    z-index: 1;
+}
+
+main .descripcion:before {
+    content: "";
+    position: absolute;
+    background-image: url("../img/fondo-article.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: .9;
+    height: 85vh;
+    width: 100%;
+    z-index: -1;
+}
+
+.descripcion {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-descripcion h2 {
+    color: #fff;
+}
+
+.contenido-descripcion p {
+    color: #fff;
+    text-align: center;
+    font-size: 1.3em;
+    margin: 0 0 .7rem;
+}
+
+.contenido-descripcion a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--colorPrincipal);
+}
+
+@media (min-width: 990px) {
+    .contenido-descripcion a {
+        color: var(--colorPrincipalClaro);
+    }
+}
+
+
+/**Iconos*/
+
+.iconos h2 {
+    margin: 1em 0 0;
+}
+
+.iconos>p {
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.listado-iconos {
+    text-align: center;
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icono {
+    margin-bottom: 2em;
+}
+
+.icono i {
+    font-size: 3em;
+    margin: .3em;
+    color: var(--colorPrincipal);
+}
+
+.icono p {
+    font-weight: bold;
+    color: var(--colorPrincipalClaro);
+}
+
+@media (min-width: 780px) {
+    .icono {
+        width: 50%;
+    }
+    .listado-iconos {
+        flex-direction: row;
+    }
+}
+
+
+/**Galería imagenes*/
+
+.galeria-imagenes {
+    padding: 2em 0 4em;
+    background-color: rgb(245, 245, 245);
+}
+
+.galeria h2 {
+    padding: 1em 0;
+    text-transform: uppercase;
+}
+
+.imagenes {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagenes img {
+    width: 100%;
+    filter: sepia(20%);
+    transition: filter .3s ease;
+}
+
+.imagenes img:hover {
+    filter: sepia(0%);
+}
+
+@media (min-width: 480px) {
+    .imagenes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .imagenes a {
+        margin: 1%;
+        width: 48%;
+    }
+}
+
+@media (min-width: 990px) {
+    .imagenes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .imagenes a {
+        margin: 1%;
+        width: 31%;
+    }
+}
+
+
+/**FOOTER*/
+
+footer h3 {
+    padding: 1em 0;
+    font-size: .9em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+
+/*
+.contacto-footer span {
+    color: var(--colorPrincipalClaro);
+}
+*/
+
+.fondo-contacto-footer {
+    background-color: var(--colorPrincipal);
+}
+
+.contacto-footer {
+    font-family: 'PT Sans', sans-serif;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-footer .info-candidatos {
+    font-size: 1em;
+    padding: 0 0 1em;
+    color: #fff;
+}
+
+.info-candidatos a {
+    text-decoration: none;
+    color: var(--colorPrincipalClaro);
+}
+
+.info-mail p {
+    color: #fff;
+    padding: 0 0 1em;
+}
+
+.redes-sociales ul {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+}
+
+.redes-sociales li {
+    padding: 0 1.5em 1em 0;
+}
+
+.redes-sociales a {
+    color: #fff;
+    font-size: 1.7em;
+}
+
+@media (min-width:687px) {
+    footer h3 {
+        text-align: center;
+    }
+    .contacto-footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .info-candidatos {
+        text-align: justify;
+        width: 33%;
+    }
+    .redes-sociales {
+        text-align: center;
+        width: 33%;
+    }
+    .redes-sociales ul {
+        justify-content: center;
+    }
+    .redes-sociales li {
+        padding: 0 1em;
+    }
+    .info-mail {
+        text-align: center;
+        width: 33%;
+    }
+}
+
+.fondo-copyright-footer {
+    background-color: rgb(20, 20, 20);
+}
+
+.copyright-footer h3 {
+    letter-spacing: 2px;
+    font-size: .8em;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding: .4rem;
+    border-radius: 10px;
+    font-family: 'Schoolbell', cursive;
+}
+
+.copyright-footer h3 span {
+    text-transform: lowercase;
+}
