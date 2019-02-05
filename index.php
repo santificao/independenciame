@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link href="https://fonts.googleapis.com/css?family=Oswald|PT+Sans|Schoolbell" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/lightbox.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <title>IndependenciaMe</title>
-</head>
-
-<body>
-    <header>
-        <div class="barra contenido">
-            <div class="logo">
-                <h1><span>In</span>dependencia<span>me</span>.org</h1>
-            </div>
-
-            <nav>
-                <ul class="menu">
-                    <li><a href="#">Iniciar sesión</a></li>
-                    <li><a href="#">Crear cuenta</a></li>
-                    <li><a href="#">Trabaja con nosotros</a></li>
-                </ul>
-                <span class="menu-movil"><i class="fas fa-bars"></i></span>
-            </nav>
-        </div>
-    </header>
+<?php
+include_once("header.php");
+?>
 
     <main>
         <article class="descripcion">
@@ -86,41 +55,8 @@
                 </div>
             </div>
         </article>
-
     </main>
 
-    <footer>
-        <div class="fondo-contacto-footer">
-            <div class="contacto-footer contenido">
-                <div class="info-candidatos">
-                    <h3>Trabaja <span>con nosotros</span></h3>
-                    <p class="cursiva">Si deseas formar parte de nuestra comunidad <a href="#">regístrate aquí</a> . En caso de requerir información adicional, un miembro de nuestro equipo se pondrá en contacto contigo en un plazo máximo de 24/48h</p>
-                </div>
-                <div class="info-mail">
-                    <h3>Contáctanos</h3>
-                    <p>info@independenciame.org</p>
-                </div>
-                <div class="redes-sociales">
-                    <h3>Redes <span>sociales</span></h3>
-                    <ul>
-                        <li><a href=""><i class="fab fa-facebook-square"></a></i>
-                        </li>
-                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                        <li><a href=""><i class="fab fa-twitter-square"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="fondo-copyright-footer">
-            <div class="copyright-footer contenido">
-                <h3><span>In</span>dependencia<span>me</span>.org &copy; 2019</h3>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="js/lightbox.min.js"></script>
-    <script src="js/app.js"></script>
-</body>
-
-</html>
+<?php
+include_once("footer.php");
+?>
