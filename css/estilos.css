@@ -6,7 +6,7 @@ font-family: 'PT Sans', sans-serif;
 :root {
     --colorPrincipal: rgb(19, 54, 53);
     --colorPrincipalClaro: rgb(137, 216, 63);
-    --colorSecundario: rgb(200, 255, 200);
+    --colorPrincipalMedio: rgb(106, 168, 47);
 }
 
 * {
@@ -48,8 +48,12 @@ h2 {
     font-family: 'Oswald', sans-serif;
 }
 
-.logo {
+.logo a {
+    text-decoration: none;
     color: var(--colorPrincipal);
+}
+
+.logo {
     text-transform: uppercase;
     padding: .4rem;
     border-radius: 10px;
@@ -93,7 +97,7 @@ h2 {
     cursor: pointer;
 }
 
-@media (min-width: 780px) {
+@media (min-width: 880px) {
     .contenido {
         width: 90%;
         max-width: 1000px;
@@ -128,6 +132,9 @@ h2 {
 /*MAIN*/
 
 
+/**Página de presentación inicial*/
+
+
 /**Descripción*/
 
 main {
@@ -142,7 +149,7 @@ main .descripcion {
 main .descripcion:before {
     content: "";
     position: absolute;
-    background-image: url("../img/fondo-article.jpg");
+    background-image: url("../img/fondo-presentacion.jpg");
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
@@ -216,7 +223,7 @@ main .descripcion:before {
     color: var(--colorPrincipalClaro);
 }
 
-@media (min-width: 780px) {
+@media (min-width: 768px) {
     .icono {
         width: 50%;
     }
@@ -273,6 +280,186 @@ main .descripcion:before {
         margin: 1%;
         width: 31%;
     }
+}
+
+
+/**INICIO SESIÓN*/
+
+.inicio-sesion {
+    background-color: #fff;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width:768px) {
+    .inicio-sesion {
+        height: 80vh;
+    }
+}
+
+.inicio-sesion h2 {
+    font-size: 1.5em;
+    color: var(--colorPrincipal);
+}
+
+
+/**REGISTRO USUARIOS*/
+
+.registro-usuario {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registro-usuario h2 {
+    color: var(--colorPrincipal);
+    padding: 0;
+}
+
+.registro-usuario p {
+    font-family: 'Oswald';
+    text-align: center;
+    padding: 1.5em;
+    color: var(--colorPrincipal);
+}
+
+
+/**Registro empleado*/
+
+.registro-empleado {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registro-empleado h2 {
+    color: var(--colorPrincipal);
+    padding: 0;
+}
+
+.registro-empleado p {
+    font-family: 'Oswald';
+    text-align: center;
+    padding: 1.5em;
+    color: var(--colorPrincipal);
+}
+
+.formacion {
+    display: none;
+    flex-direction: column;
+}
+
+
+/**Formularios*/
+
+.formulario {
+    width: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.columna1,
+.columna2 {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .registro-usuario .formulario,
+    .registro-empleado .formulario {
+        width: 100%;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: 1fr 1fr;
+    }
+    .columna1 {
+        grid-column: 1 / 2;
+    }
+    .columna2 {
+        grid-column: 2 / 3;
+    }
+    .registro-usuario .boton-submit,
+    .registro-empleado .boton-submit {
+        width: 400px;
+        display: block;
+        margin: 1em auto;
+        grid-column: 1 / 3;
+    }
+}
+
+.formulario legend {
+    font-family: 'Oswald';
+    text-align: center;
+    margin: 1em;
+    padding-bottom: .6em;
+    color: var(--colorPrincipalMedio);
+}
+
+.formulario label,
+.formulario input {
+    margin-bottom: 1rem;
+    color: var(--colorPrincipal);
+}
+
+.formulario label {
+    font-weight: bold;
+}
+
+.formulario input:not(.boton-submit) {
+    font-size: 1.2em;
+    padding: .6rem 0;
+    border: none;
+    border-bottom: 1px solid var(--colorPrincipal);
+}
+
+.formulario input:focus {
+    outline: 0px;
+}
+
+.formulario select {
+    border: none;
+    padding: .6em 0;
+    outline: 2px solid var(--colorPrincipalMedio);
+}
+
+.formulario select:focus {
+    outline: 2px solid var(--colorPrincipalClaro);
+}
+
+.formulario .boton-submit {
+    margin-top: 2rem;
+    padding: .8em;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: var(--colorPrincipalClaro);
+    transition: all .3s ease;
+}
+
+.formulario .boton-submit:hover {
+    background-color: var(--colorPrincipalMedio);
+}
+
+
+/**Para el relleno y el texto de color del autocompletado*/
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #000;
 }
 
 

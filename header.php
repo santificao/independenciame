@@ -18,16 +18,17 @@
     <header>
         <div class="barra contenido">
             <div class="logo">
-                <h1><span>In</span>dependencia<span>me</span>.org</h1>
+                <a href="index.php"><h1><span>In</span>dependencia<span>me</span>.org</h1></a> 
             </div>
 
             <nav>
                 <ul class="menu">
-                    <li><a href="#">Iniciar sesión</a></li>
-                    <li><a href="#">Crear cuenta</a></li>
-                    <li><a href="#">Trabaja con nosotros</a></li>
+                    <li><a href="index.php?p=1">Iniciar sesión</a></li>
+                    <li><a href="index.php?p=2">Crear cuenta persona dependiente</a></li>
+                    <li><a href="index.php?p=3">Trabaja con nosotros</a></li>
                 </ul>
                 <span class="menu-movil"><i class="fas fa-bars"></i></span>
             </nav>
         </div>
     </header>
+<main>
