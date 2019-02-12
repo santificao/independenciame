@@ -1,3 +1,28 @@
+<?php
+require("modelo/db_abstract_model.php");
+require("modelo/modelo_usuario.php");
+require("libreria_de_clases/utilidades.php");+
+require("libreria_de_clases/sesion.php");
+
+session_start();
+
+if (isset($_POST["inicia_sesion"])) {
+    $nombreUsuario = $_POST["usuario"];
+    $contraseña = $_POST["contraseña"];
+
+    $usuario = new Usuario();
+    $usuario->get($nombreUsuario, $contraseña);
+    
+    if ($usuario->nombre != "") {  
+        Sesion::inicia_sesion($usuario);
+    } else {
+        echo "<p>Usuario o contraseña incorrectos</p>";
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +47,31 @@
             </div>
 
             <nav>
+                <?php
+                if (!isset($_SESSION["usuario"])) {
+                ?>
+                <!--Menú de iniciar sesión-->
                 <ul class="menu">
                     <li><a href="index.php?p=1">Iniciar sesión</a></li>
                     <li><a href="index.php?p=2">Crear cuenta persona dependiente</a></li>
                     <li><a href="index.php?p=3">Trabaja con nosotros</a></li>
                 </ul>
                 <span class="menu-movil"><i class="fas fa-bars"></i></span>
+                <?php
+                } else {
+                ?>
+                <!--Menú de sesión iniciada-->
+                <ul class="menu menu-sesion">
+                    <li><a href="index.php?p=1">Inicio</a></li>
+                    <li><a href="index.php?p=2">Mensajes</a></li>
+                    <li><a href="index.php?p=3">Notificaciones</a></li>
+                    <li><a href="index.php?p=4">Configuración</a></li>
+                    <li><a href="index.php?p=5">Cerrar sesión</a></li>
+                </ul>
+                <span class="menu-movil"><img src="img/foto.jpg"> <i class="fas fa-angle-down"></i></span> 
+                <?php
+                }
+                ?>
             </nav>
         </div>
     </header>

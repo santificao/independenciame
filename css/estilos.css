@@ -58,6 +58,7 @@ h2 {
     padding: .4rem;
     border-radius: 10px;
     font-family: 'Schoolbell', cursive;
+    font-size: .7rem;
 }
 
 .logo span {
@@ -73,11 +74,12 @@ h2 {
     top: 15vh;
     z-index: 5;
     width: 100%;
-    background-color: rgba(124, 120, 120, 0.7);
+    background-color: rgba(124, 120, 120, 0.90);
 }
 
 .menu li {
     padding: 1.1rem;
+    transition: all .3s ease;
 }
 
 .menu li a {
@@ -87,8 +89,16 @@ h2 {
     transition: all .3s ease;
 }
 
-.menu li a:hover {
-    color: var(--colorPrincipal);
+.menu li i {
+    margin-right: 1em;
+}
+
+.menu li:hover {
+    background-color: rgba(122, 122, 122, 0.9);
+}
+
+.menu li:hover>a {
+    color: var(--colorPrincipalClaro);
 }
 
 .menu-movil {
@@ -97,7 +107,18 @@ h2 {
     cursor: pointer;
 }
 
-@media (min-width: 880px) {
+.menu-movil img {
+    width: 50px;
+    margin-right: 1em;
+}
+
+@media (min-width: 480px) {
+    .logo {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 900px) {
     .contenido {
         width: 90%;
         max-width: 1000px;
@@ -112,16 +133,18 @@ h2 {
         padding: 0;
         margin: .2rem;
     }
+    .menu li:hover {
+        background-color: transparent;
+    }
     .menu li a {
-        padding: .5rem;
-        border-radius: 10px;
+        padding: .8rem;
+        border-radius: 3px;
         cursor: pointer;
         transition: all .3s ease;
         color: var(--colorPrincipal);
     }
     .menu li a:hover {
-        color: #fff;
-        background-color: var(--colorPrincipalClaro);
+        color: var(--colorPrincipalClaro);
     }
     .menu-movil {
         display: none;
@@ -456,10 +479,110 @@ main .descripcion:before {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
 }
 
 input:-webkit-autofill {
     -webkit-text-fill-color: #000;
+}
+
+
+/**SESIÓN INICIADA*/
+
+
+/**Panel principal*/
+
+.panel {
+    border-top: 2px solid var(--colorPrincipal);
+}
+
+
+/**anuncios*/
+
+.tablon-anuncios {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.alerta-notificaciones,
+.alerta-mensajes {
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+    padding: .3em;
+    margin: .3em;
+    border-bottom: 1px solid var(--colorPrincipal);
+}
+
+.alerta-mensajes .ver-todos {
+    font-size: .8rem;
+    padding: .2rem;
+    color: var(--colorPrincipalMedio);
+    cursor: pointer;
+}
+
+.ver-todos:hover {
+    color: var(--colorPrincipalClaro);
+}
+
+
+/*datos*/
+
+.datos {
+    background-color: rgb(250, 250, 250);
+    padding: 2em;
+}
+
+.datos h2 {
+    padding-bottom: .5em;
+}
+
+.datos img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.datos .personales p {
+    text-align: center;
+    padding: .3em;
+    color: var(--colorPrincipal);
+}
+
+.datos .personales span {
+    font-size: 1.1rem;
+    color: var(--colorPrincipalMedio);
+}
+
+@media (min-width: 680px) {
+    .panel {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+    }
+    .datos {
+        width: 40%;
+        margin: 10px auto;
+    }
+    .tablon-anuncios {
+        width: 60%;
+        align-items: inherit;
+        margin: 10px auto;
+    }
+    /*
+    main {
+        overflow: hidden;
+    }
+    .datos {
+        float: left;
+        width: 40%;
+    }
+    .tablon-anuncios {
+        float: right;
+        width: 60%;
+        padding: 1em;
+    }
+    */
 }
 
 
