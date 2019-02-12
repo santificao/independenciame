@@ -9,6 +9,9 @@ font-family: 'PT Sans', sans-serif;
     --colorPrincipalMedio: rgb(106, 168, 47);
 }
 
+
+/*GENERALES**/
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +24,13 @@ font-family: 'PT Sans', sans-serif;
 
 .negrita {
     font-weight: bold;
+}
+
+.error {
+    font-family: 'Oswald', sans-serif;
+    color: rgb(250, 10, 10);
+    text-align: center;
+    margin-bottom: .5em;
 }
 
 h2 {
@@ -36,7 +46,7 @@ h2 {
 /*HEADER*/
 
 .contenido {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
@@ -108,20 +118,24 @@ h2 {
 }
 
 .menu-movil img {
-    width: 50px;
-    margin-right: 1em;
+    width: 60px;
+    margin-right: .3em;
+    border-radius: 3px;
 }
 
 @media (min-width: 480px) {
     .logo {
         font-size: 1em;
     }
-}
-
-@media (min-width: 900px) {
     .contenido {
         width: 90%;
-        max-width: 1000px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contenido {
+        width: 90%;
+        max-width: 1400px;
     }
     .menu {
         position: inherit;
@@ -530,8 +544,10 @@ input:-webkit-autofill {
 /*datos*/
 
 .datos {
-    background-color: rgb(250, 250, 250);
+    border-radius: 3px;
+    background-color: rgb(240, 240, 240);
     padding: 2em;
+    margin: .7em auto;
 }
 
 .datos h2 {
@@ -539,7 +555,7 @@ input:-webkit-autofill {
 }
 
 .datos img {
-    width: 100px;
+    width: 150px;
     border-radius: 50%;
 }
 
@@ -594,13 +610,6 @@ footer h3 {
     text-transform: uppercase;
     color: #fff;
 }
-
-
-/*
-.contacto-footer span {
-    color: var(--colorPrincipalClaro);
-}
-*/
 
 .fondo-contacto-footer {
     background-color: var(--colorPrincipal);

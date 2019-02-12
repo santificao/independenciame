@@ -14,6 +14,9 @@ if(isset($_SESSION["usuario"])) {
     switch($p) {
         case 1: include_once("panel_principal.php");
             break;
+        case 6: Sesion::cierra_sesion();
+            header("Location: index.php");
+            break;
     }
 } else  {
 

@@ -10,8 +10,24 @@ class Sesion {
         $_SESSION["usuario"]["dni"] = $usuario->dni;
         $_SESSION["usuario"]["email"] = $usuario->email;
         $_SESSION["usuario"]["telefono"] = $usuario->telefono;
-        $_SESSION["usuario"]["edad"] =  calcularEdad($usuario->fecha_nacimiento);
-        $_SESSION["usuario"]["tipo_usuario"] = $usuario->tipo;
+        $_SESSION["usuario"]["edad"] =  calcular_edad($usuario->fecha_nacimiento);
+        $_SESSION["usuario"]["tipo_usuario"] = $usuario->tipo_usuario;
+
+        switch($_SESSION["usuario"]["tipo_usuario"]) {
+            case "A":
+            case "B":
+                $trabajador = new Trabajador();
+                $trabajador->datos_trabajador($usuario->id_usuario);
+                $_SESSION["usuario"]["tipo_trabajador"] = $trabajador->tipo_trabajador;
+                $_SESSION["usuario"]["visible"] = $trabajador->visible;
+                break;
+            case "C":
+                $paciente = new Paciente();
+                $paciente->datos_paciente($usuario->id_usuario);
+                $_SESSION["usuario"]["grado_dependencia"] = $paciente->grado_dependencia;
+                break;
+        }
+
         $_SESSION["usuario"]["url_imagen"] = $usuario->url_imagen;  
     }
 

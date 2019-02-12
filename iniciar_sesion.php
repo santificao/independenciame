@@ -8,6 +8,13 @@
             <label for="contraseña">Contraseña </label> <input type="password" name="contraseña" id="contraseña">
 
             <input class="boton-submit" type="submit" value="Iniciar sesión" name="inicia_sesion">
-        </form>      
+        </form> 
+
+        <?php
+            if(isset($alerta)) {
+                echo $alerta;
+            }
+        ?>     
+
     </div>
 </article>

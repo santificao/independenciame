@@ -17,9 +17,9 @@ class Usuario extends DBAbstractModel {
     public $url_imagen;
 
 	function __construct() {
-		$this->db_name = 'independenciame';
-		
+		$this->db_name = 'independenciame';	
 	}
+
 
 	public function get($usuario='', $contrasenia = '') {
 		if($usuario != '' && $contrasenia != '') {

@@ -1,7 +1,9 @@
 <?php
 require("modelo/db_abstract_model.php");
 require("modelo/modelo_usuario.php");
-require("libreria_de_clases/utilidades.php");+
+require("modelo/modelo_trabajador.php");
+require("modelo/modelo_paciente.php");
+require("libreria_de_clases/utilidades.php");
 require("libreria_de_clases/sesion.php");
 
 session_start();
@@ -16,9 +18,8 @@ if (isset($_POST["inicia_sesion"])) {
     if ($usuario->nombre != "") {  
         Sesion::inicia_sesion($usuario);
     } else {
-        echo "<p>Usuario o contraseña incorrectos</p>";
+        $alerta = generar_alerta("Usuario o contraseña incorrectos", "error");
     }
-
 }
 
 ?>
@@ -66,9 +67,18 @@ if (isset($_POST["inicia_sesion"])) {
                     <li><a href="index.php?p=2">Mensajes</a></li>
                     <li><a href="index.php?p=3">Notificaciones</a></li>
                     <li><a href="index.php?p=4">Configuración</a></li>
-                    <li><a href="index.php?p=5">Cerrar sesión</a></li>
+
+                    <?php
+                    if ($_SESSION["usuario"]["tipo_usuario"] == "C") {
+                    ?>  
+                     <li><a href="index.php?p=5">Solicitar ayuda</a></li>
+                    <?php
+                    }
+                    ?>
+
+                    <li><a href="index.php?p=6">Cerrar sesión</a></li>
                 </ul>
-                <span class="menu-movil"><img src="img/foto.jpg"> <i class="fas fa-angle-down"></i></span> 
+                <span class="menu-movil"><img src="<?php echo $_SESSION["usuario"]["url_imagen"]?>"> <i class="fas fa-angle-down"></i></span> 
                 <?php
                 }
                 ?>
