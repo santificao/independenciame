@@ -33,6 +33,22 @@ font-family: 'PT Sans', sans-serif;
     margin-bottom: .5em;
 }
 
+.boton {
+    margin: 2rem auto 0;
+    padding: .8em;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: var(--colorPrincipalClaro);
+    transition: all .3s ease;
+    display: block;
+}
+
+.boton:hover {
+    background-color: var(--colorPrincipalMedio);
+}
+
 h2 {
     font-family: 'Oswald', sans-serif;
     text-align: center;
@@ -43,14 +59,14 @@ h2 {
 }
 
 
-/*HEADER*/
+/******HEADER******/
 
 .contenido {
     width: 95%;
     margin: auto;
 }
 
-.barra {
+.barra-inicio {
     height: 15vh;
     display: flex;
     justify-content: space-between;
@@ -132,10 +148,14 @@ h2 {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
     .contenido {
         width: 90%;
         max-width: 1400px;
+    }
+    .barra {
+        justify-content: center;
+        flex-direction: column;
     }
     .menu {
         position: inherit;
@@ -166,7 +186,7 @@ h2 {
 }
 
 
-/*MAIN*/
+/**********MAIN***********/
 
 
 /**Página de presentación inicial*/
@@ -345,6 +365,9 @@ main .descripcion:before {
 
 /**REGISTRO USUARIOS*/
 
+
+/**Registro paciente*/
+
 .registro-usuario {
     background-color: #fff;
     display: flex;
@@ -488,6 +511,12 @@ main .descripcion:before {
     background-color: var(--colorPrincipalMedio);
 }
 
+.formulario .boton-extrecho {
+    display: block;
+    width: 50%;
+    margin: 1rem auto 0;
+}
+
 
 /**Para el relleno y el texto de color del autocompletado*/
 
@@ -501,17 +530,17 @@ input:-webkit-autofill {
 }
 
 
-/**SESIÓN INICIADA*/
+/*****SESIÓN INICIADA******/
 
 
-/**Panel principal*/
+/**PANEL PRINCIPAL/INICIO*/
 
 .panel {
     border-top: 2px solid var(--colorPrincipal);
 }
 
 
-/**anuncios*/
+/**Alertas y mensajes*/
 
 .tablon-anuncios {
     display: flex;
@@ -541,7 +570,7 @@ input:-webkit-autofill {
 }
 
 
-/*datos*/
+/**Datos usuario*/
 
 .datos {
     border-radius: 3px;
@@ -585,24 +614,129 @@ input:-webkit-autofill {
         align-items: inherit;
         margin: 10px auto;
     }
-    /*
-    main {
-        overflow: hidden;
-    }
-    .datos {
-        float: left;
-        width: 40%;
-    }
-    .tablon-anuncios {
-        float: right;
-        width: 60%;
-        padding: 1em;
-    }
-    */
 }
 
 
-/**FOOTER*/
+/**SOLICITUD ASISTENCIA*/
+
+.solicitud-asistencia {
+    background-color: #fff;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.solicitud-asistencia h2 {
+    padding-top: 1rem;
+    color: var(--colorPrincipal);
+}
+
+
+/**Listado resultado trabajadores disponibles*/
+
+.trabajadores-disponibles {
+    background-color: #fff;
+}
+
+.trabajadores-disponibles h2 {
+    font-size: 1.5em;
+    color: var(--colorPrincipal);
+}
+
+.trabajadores-disponibles h2:first-child {
+    padding: 1.5rem 0 1rem;
+}
+
+.datos-trabajador-disponible {
+    min-width: 310px;
+    max-width: 500px;
+    width: 90%;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    margin: 0 auto 1.5rem;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos-trabajador-disponible p {
+    color: var(--colorPrincipal);
+    margin: .5rem;
+}
+
+.datos-trabajador-disponible span {
+    color: var(--colorPrincipalMedio);
+}
+
+.datos-trabajador-disponible img {
+    margin-bottom: .5em;
+    width: 150px;
+    border-radius: 50%;
+}
+
+@media (min-width: 880px) {
+    .trabajadores-disponibles-listado {
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: 1fr 1fr;
+    }
+    .datos-trabajador-disponible:nth-child(odd) {
+        grid-column: 1 / span 1;
+    }
+    .datos-trabajador-disponible:nth-child(even) {
+        grid-column: 2 / span 1;
+    }
+}
+
+@media (min-width: 992px) {
+    .trabajadores-disponibles-listado {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .datos-trabajador-disponible {
+        margin: 1em!important;
+    }
+}
+
+
+/**Solicitud enviada*/
+
+.solicitud-enviada-informacion {
+    height: 71vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensaje-solicitud {
+    padding: 2em;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px var(--colorPrincipal);
+    animation-name: mensaje;
+    animation-duration: .8s;
+    animation-fill-mode: forwards;
+}
+
+.mensaje-solicitud h2 {
+    padding: .5em!important;
+    color: var(--colorPrincipal);
+}
+
+@keyframes mensaje {
+    100% {
+        transform: scale(1.1);
+        background-color: rgb(253, 253, 253);
+        box-shadow: 0px 0px 15px var(--colorPrincipal);
+    }
+}
+
+
+/******FOOTER*******/
 
 footer h3 {
     padding: 1em 0;

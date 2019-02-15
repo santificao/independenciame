@@ -2,6 +2,7 @@
 require("modelo/db_abstract_model.php");
 require("modelo/modelo_usuario.php");
 require("modelo/modelo_trabajador.php");
+require("modelo/modelo_solicitud.php");
 require("modelo/modelo_paciente.php");
 require("libreria_de_clases/utilidades.php");
 require("libreria_de_clases/sesion.php");
@@ -42,7 +43,11 @@ if (isset($_POST["inicia_sesion"])) {
 
 <body>
     <header>
-        <div class="barra contenido">
+        <div class="<?php
+                if (isset($_SESSION["usuario"])) {
+                echo "barra ";
+                }
+                ?>barra-inicio contenido">
             <div class="logo">
                 <a href="index.php"><h1><span>In</span>dependencia<span>me</span>.org</h1></a> 
             </div>
@@ -71,7 +76,7 @@ if (isset($_POST["inicia_sesion"])) {
                     <?php
                     if ($_SESSION["usuario"]["tipo_usuario"] == "C") {
                     ?>  
-                     <li><a href="index.php?p=5">Solicitar ayuda</a></li>
+                     <li><a href="index.php?p=5">Solicitar asistencia</a></li>
                     <?php
                     }
                     ?>

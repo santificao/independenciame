@@ -46,6 +46,7 @@ class Usuario extends DBAbstractModel {
 		return $this->rows;
 	}
 	
+	/**Hay que corregirlo */
 	public function set($prod_data=array()) {
 		if(array_key_exists('dni', $dni)) {
             
@@ -80,7 +81,7 @@ class Usuario extends DBAbstractModel {
 		$this->execute_single_query();
 		}
         
-
+	/**Hay que corregirlo*/
 	public function delete($cod_prod='') {
 		$this->query = "
 		DELETE FROM productos
@@ -88,7 +89,7 @@ class Usuario extends DBAbstractModel {
 		";
 		$this->execute_single_query();
 	}
-
+	/**Hay que corregirlo*/
 	public function buscar($nombre) {
 		$this->query = "
 			SELECT * FROM datos_usuario

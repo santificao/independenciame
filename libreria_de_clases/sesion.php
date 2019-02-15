@@ -3,6 +3,7 @@
 class Sesion {
 
     static function inicia_sesion($usuario) {
+        $_SESSION["usuario"]["id"] = $usuario->id_usuario;
         $_SESSION["usuario"]["nombre"] = $usuario->nombre;
         $_SESSION["usuario"]["apellidos"] = $usuario->apellido_1." ".$usuario->apellido_2;
         $_SESSION["usuario"]["ciudad"] = $usuario->ciudad;

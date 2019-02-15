@@ -1,6 +1,5 @@
 //JQuery
 $(document).ready(function() {
-
     /**Efectos personalizados para plugin lightBox */
     lightbox.option({
         'albumLabel': "Imagen %1 de %2"
@@ -21,5 +20,9 @@ $(document).ready(function() {
             $(".formacion").slideUp(400);
         }
     });
+
+    $("#volver").click(function() {
+        window.location.assign("index.php");
+    })
 
 });

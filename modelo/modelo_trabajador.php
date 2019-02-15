@@ -20,5 +20,14 @@ class Trabajador extends Usuario {
 			}
         } 
 	}
+
+	public function get_todos() {
+		$this->query = "
+		SELECT *
+		FROM datos_usuario INNER JOIN trabajador 
+		ON datos_usuario.id_usuario = trabajador.id_usuario";
+		$this->get_results_from_query();
+		return $this->rows;
+	}
 }
 ?>

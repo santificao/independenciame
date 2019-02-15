@@ -27,11 +27,10 @@
                 <h3><span>In</span>dependencia<span>me</span>.org &copy; 2019</h3>
             </div>
         </div>
+
+        <script src="js/lightbox.min.js"></script>
+        <script src="js/app.js"></script>
     </footer>
-
-
-    <script src="js/lightbox.min.js"></script>
-    <script src="js/app.js"></script>
 </body>
 
 </html>

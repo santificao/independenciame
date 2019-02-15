@@ -59,10 +59,21 @@
                 } else {
                     $tipo_usuario = "Paciente";
                     $grado_dependencia = $_SESSION["usuario"]["grado_dependencia"];
+                    switch($grado_dependencia) {
+                        case 1: 
+                            $grado_dependencia = "Moderada";
+                            break;
+                        case 2:
+                            $grado_dependencia = "Severa";
+                            break;
+                        case 3:
+                            $grado_dependencia = "Gran dependencia";
+                            break;
+                    }
                 ?>
 
                 <p><span class="eti">Tipo de usuario:</span> <?php echo $tipo_usuario?></p>
-                <p><span class="eti">Dependencia:</span> Grado <?php echo $grado_dependencia?></p>
+                <p><span class="eti">Grado de dependencia:</span> <?php echo $grado_dependencia?></p>
 
                 <?php
                 }
