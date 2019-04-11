@@ -2,13 +2,22 @@
 <div class="panel contenido">
         <article class="tablon-anuncios contenido">
             <div class="alerta-notificaciones">
-                <p><span><i class="far fa-bell"></i></span> Notificaciones (<span class="nuevas-notificaciones">0</span>)</p>
+                <p><span><i class="far fa-bell"></i></span> Notificaciones ( <span class="nuevas-notificaciones"><?php
+                    $solicitud = new solicitud();           
+                    $solicitudes = $solicitud->get_cuantas_solicitudes_nuevas($_SESSION["usuario"]["id"], $_SESSION["usuario"]["tipo_usuario"]);
+
+                    if ($solicitudes > 0 ) {
+                        echo "<a class='enlace' href='index.php?p=3'>$solicitudes</a>";
+                    } else {
+                        echo $solicitudes;
+                    }
+                ?></span> )</p>
             </div>
 
             <div class="alerta-mensajes">
-                <p><span><i class="far fa-envelope"></i></span> Nuevos mensajes (<span class="nuevos-mensajes">0</span>)</p>
+                <p><span><i class="far fa-envelope"></i></span> Nuevos mensajes ( <span class="nuevos-mensajes">0</span> )</p>
 
-                <p class="ver-todos">ver todos los mensajes</p>
+                <a href="index.php?p=2" class="enlace">ver todos los mensajes</a>
             </div>
         </article>
 

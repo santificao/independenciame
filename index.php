@@ -7,6 +7,9 @@ if(isset($_SESSION["usuario"])) {
 
     if (isset($_GET["p"])) {
         $p = $_GET["p"];
+        if ($p < 0 || $p > 6) {
+            $p = 1;
+        }
     } else {
         $p = 1;
     } 
@@ -14,6 +17,12 @@ if(isset($_SESSION["usuario"])) {
     switch($p) {
         case 1: 
             include_once("panel_principal.php");
+            break;
+        case 2:
+            include_once("mensajes.php");
+            break;
+        case 3:
+            include("notificaciones.php");
             break;
         case 5:
             include("solicitud_asistencia.php");
@@ -27,6 +36,9 @@ if(isset($_SESSION["usuario"])) {
 
     if (isset($_GET["p"])) {
         $p = $_GET["p"];
+        if ($p < 0 || $p > 3) {
+            $p = 0;
+        }
     }   
 
     switch($p) {

@@ -7,8 +7,9 @@ class Paciente extends Usuario {
 
     public function datos_paciente($id_usuario) {
 		$this->query = "
-			SELECT grado_dependencia FROM paciente
-			WHERE id_usuario = '$id_usuario'
+			SELECT * FROM paciente INNER JOIN datos_usuario
+			ON paciente.id_usuario = datos_usuario.id_usuario
+			WHERE paciente.id_usuario = '$id_usuario'
 		";
 
         $this->get_results_from_query();

@@ -8,8 +8,9 @@ class Trabajador extends Usuario {
 
     public function datos_trabajador($id_usuario) {
 		$this->query = "
-			SELECT * FROM trabajador
-			WHERE id_usuario = '$id_usuario'
+			SELECT * FROM trabajador INNER JOIN datos_usuario
+			ON trabajador.id_usuario = datos_usuario.id_usuario
+			WHERE trabajador.id_usuario = '$id_usuario'
 		";
 
         $this->get_results_from_query();

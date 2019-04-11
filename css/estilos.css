@@ -33,6 +33,17 @@ font-family: 'PT Sans', sans-serif;
     margin-bottom: .5em;
 }
 
+.enlace {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--colorPrincipalClaro);
+    transition: color .3s ease;
+}
+
+.enlace:hover {
+    color: var(--colorPrincipalMedio);
+}
+
 .boton {
     margin: 2rem auto 0;
     padding: .8em;
@@ -530,14 +541,10 @@ input:-webkit-autofill {
 }
 
 
-/*****SESIÓN INICIADA******/
+/*****DENTRO DE LA APLICACIÓN******/
 
 
 /**PANEL PRINCIPAL/INICIO*/
-
-.panel {
-    border-top: 2px solid var(--colorPrincipal);
-}
 
 
 /**Alertas y mensajes*/
@@ -553,9 +560,12 @@ input:-webkit-autofill {
     text-align: center;
     width: 100%;
     font-size: 1.5em;
-    padding: .3em;
+    padding: .4em;
     margin: .3em;
-    border-bottom: 1px solid var(--colorPrincipal);
+}
+
+.tablon-anuncios .alerta-notificaciones .enlace {
+    font-size: 1.3rem;
 }
 
 .alerta-mensajes .ver-todos {
@@ -567,6 +577,10 @@ input:-webkit-autofill {
 
 .ver-todos:hover {
     color: var(--colorPrincipalClaro);
+}
+
+.tablon-anuncios .enlace {
+    font-size: .9rem;
 }
 
 
@@ -636,17 +650,8 @@ input:-webkit-autofill {
 
 /**Listado resultado trabajadores disponibles*/
 
-.trabajadores-disponibles {
-    background-color: #fff;
-}
-
-.trabajadores-disponibles h2 {
-    font-size: 1.5em;
-    color: var(--colorPrincipal);
-}
-
-.trabajadores-disponibles h2:first-child {
-    padding: 1.5rem 0 1rem;
+.trabajadores-disponibles-listado {
+    margin-bottom: 2rem;
 }
 
 .datos-trabajador-disponible {
@@ -673,6 +678,7 @@ input:-webkit-autofill {
 
 .datos-trabajador-disponible img {
     margin-bottom: .5em;
+    height: 150px;
     width: 150px;
     border-radius: 50%;
 }
@@ -731,7 +737,252 @@ input:-webkit-autofill {
     100% {
         transform: scale(1.1);
         background-color: rgb(253, 253, 253);
-        box-shadow: 0px 0px 15px var(--colorPrincipal);
+        box-shadow: 0px 0px 7px var(--colorPrincipal);
+    }
+}
+
+
+/**NOTIFICACIONES*/
+
+.notificaciones {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notificaciones h2 {
+    margin-top: 1em;
+    color: var(--colorPrincipal);
+}
+
+.notificaciones .solicitud {
+    /*border: 1px solid var(--colorPrincipalClaro);*/
+    padding: .7em;
+    margin: 1em;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.solicitud p {
+    padding: .3em;
+    color: var(--colorPrincipalMedio);
+    font-weight: bold;
+}
+
+.solicitud p span {
+    color: var(--colorPrincipal);
+}
+
+.solicitud .formulario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.solicitud .formulario input {
+    padding: .3rem 0;
+    width: 110px;
+}
+
+.formulario .aceptar:hover {
+    background-color: var(--colorPrincipal);
+}
+
+.formulario .rechazar {
+    background-color: rgb(250, 250, 250);
+    border: 2px solid rgb(184, 27, 27);
+    color: rgb(184, 27, 27);
+    font-weight: bold;
+}
+
+.formulario .rechazar:hover {
+    background-color: rgb(184, 27, 27);
+    color: #fff;
+}
+
+.solicitud p .rechazada {
+    font-weight: bold;
+    color: rgb(184, 27, 27);
+}
+
+
+/**CONTACTOS/MENSAJES*/
+
+.contactos-mensajes {
+    min-height: 70vh;
+}
+
+.contactos-mensajes h2 {
+    color: var(--colorPrincipal);
+}
+
+.contenido-contactos {
+    display: flex;
+    flex-direction: column;
+    min-height: 66vh;
+}
+
+.contenido-contactos h2 {
+    padding-bottom: 2.5rem;
+}
+
+.contenido-contactos a {
+    text-decoration: none;
+}
+
+.tarjeta-contacto {
+    background-color: rgb(248, 248, 248);
+    width: 90%;
+    transition: ease .3s all;
+}
+
+.tarjeta-contacto:hover {
+    background-color: rgb(252, 252, 252);
+}
+
+.datos .tarjeta-contacto {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.tarjeta-contacto .imagen-listado-contacto {
+    width: 65px;
+    height: 65px;
+    margin: 1rem;
+}
+
+.tarjeta-contacto .eti {
+    font-size: 1.3rem;
+    color: var(--colorPrincipalMedio);
+}
+
+.tarjeta-contacto p {
+    font-size: 1rem;
+    color: var(--colorPrincipal);
+}
+
+.tablon-mensajes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tablon-mensajes a {
+    text-decoration: none;
+    color: var(--colorPrincipalClaro);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    background-color: rgb(245, 245, 245);
+    padding: .5em 1em;
+    border-radius: 50px;
+    transition: all .2s ease;
+}
+
+.tablon-mensajes a:hover {
+    color: var(--colorPrincipalMedio);
+    background-color: rgb(240, 240, 240);
+}
+
+.hilo-mensajes span {
+    display: none;
+}
+
+.chat {
+    font-family: 'Oswald', sans-serif;
+    font-size: .8rem;
+    position: absolute;
+    top: 15vh;
+    height: 80vh;
+    width: 90%;
+    padding-top: 1.3rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    background-color: rgb(231, 231, 231);
+    text-shadow: none!important;
+    text-align: center;
+}
+
+.chat .cerrar {
+    color: rgb(255, 0, 0);
+    position: absolute;
+    font-size: 4rem;
+    top: -1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.chat .L {
+    float: left;
+    clear: both;
+    margin: 1rem;
+}
+
+.chat .R {
+    float: right;
+    clear: both;
+    margin: 2rem 7rem 1rem;
+}
+
+.mensaje-chat-envia {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 0;
+}
+
+.texto-mensaje {
+    min-width: 90%;
+    max-width: 90%;
+    border: none;
+    margin: 1rem auto;
+    max-height: 5rem;
+    min-height: 5rem;
+}
+
+.mensaje-chat-envia .boton {
+    margin: .5rem auto 2rem;
+}
+
+@media (min-width: 680px) {
+    .panel {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+    }
+    .contenido-contactos {
+        width: 55%;
+    }
+    .tablon-mensajes {
+        width: 60%;
+    }
+    .tarjeta-contacto p {
+        font-size: 1.3rem;
+        margin-left: .2rem;
+    }
+    .tarjeta-contacto .imagen-listado-contacto {
+        width: 60px;
+        height: 60px;
+        margin: 1rem;
+    }
+}
+
+@media (min-width: 920px) {
+    .tarjeta-contacto {
+        width: 60%;
     }
 }
 

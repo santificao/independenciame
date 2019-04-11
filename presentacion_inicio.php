@@ -32,7 +32,7 @@
 
                 <div class="icono">
                     <i class="fas fa-hand-holding-heart"></i>
-                    <p>Multitud de voluntarios. Paseos, hacer compañía, recados ...</p>
+                    <p>Multitud de voluntarios que te acompañarán a pasear, te ayudarán a hacer recados o simplemente te harán compañía</p>
                 </div>
             </div>
         </article>

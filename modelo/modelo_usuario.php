@@ -20,6 +20,20 @@ class Usuario extends DBAbstractModel {
 		$this->db_name = 'independenciame';	
 	}
 
+	public function get_usuario_por_id($id) {
+		$this->query = "
+		SELECT *
+		FROM datos_usuario
+		WHERE id_usuario = '$id'
+		";
+		$this->get_results_from_query();
+
+		if(count($this->rows) == 1) {
+			foreach ($this->rows[0] as $propiedad=>$valor){
+				$this->$propiedad = $valor;
+			}
+        } 
+	}
 
 	public function get($usuario='', $contrasenia = '') {
 		if($usuario != '' && $contrasenia != '') {
@@ -89,6 +103,7 @@ class Usuario extends DBAbstractModel {
 		";
 		$this->execute_single_query();
 	}
+
 	/**Hay que corregirlo*/
 	public function buscar($nombre) {
 		$this->query = "

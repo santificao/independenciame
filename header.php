@@ -4,6 +4,7 @@ require("modelo/modelo_usuario.php");
 require("modelo/modelo_trabajador.php");
 require("modelo/modelo_solicitud.php");
 require("modelo/modelo_paciente.php");
+require("modelo/modelo_mensaje.php");
 require("libreria_de_clases/utilidades.php");
 require("libreria_de_clases/sesion.php");
 
@@ -69,7 +70,7 @@ if (isset($_POST["inicia_sesion"])) {
                 <!--Menú de sesión iniciada-->
                 <ul class="menu menu-sesion">
                     <li><a href="index.php?p=1">Inicio</a></li>
-                    <li><a href="index.php?p=2">Mensajes</a></li>
+                    <li><a href="index.php?p=2">Mensajes/Contactos</a></li>
                     <li><a href="index.php?p=3">Notificaciones</a></li>
                     <li><a href="index.php?p=4">Configuración</a></li>
 
