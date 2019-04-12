@@ -20,6 +20,10 @@ class mensaje extends DBAbstractModel {
         return $this->rows;
     }
 
+    public function getHiloNuevos($id_mia, $id_remota, $time) {
+
+    }
+
     public function get($id_usuario = ""){
         $this->query = "
         SELECT * FROM mensaje
@@ -29,12 +33,12 @@ class mensaje extends DBAbstractModel {
         return $this->rows;
     }
 
-    public function set() {
+    public function set($id_remota = "", $id_mia = "", $contenido = "") {
         $this->query = "
         INSERT INTO mensaje (id_origen, id_destino, contenido, fecha_mensaje) 
-        VALUES (4, 1, 'mensaje de prueba 2', '2019-30-03')
+        VALUES ($id_mia, $id_remota, '$contenido', '2019-12-04')
         ";
-
+        $this->execute_single_query();
     }
     
     public function edit() {
