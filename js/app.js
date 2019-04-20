@@ -25,6 +25,7 @@ document.addEventListener("click", function(e) {
                 var template = `<p class='R'><span class='remarcar'>${mensaje}</span></p>`;
                 $(".conversacion-del-chat").append(template);
             }
+            $(".conversacion-del-chat").animate({ scrollTop: $('.conversacion-del-chat')[0].scrollHeight }, 1000);
         }
         xhr.send();
         $(".texto-mensaje").val("");
@@ -67,6 +68,7 @@ document.addEventListener("click", function(e) {
                 </div>
                 `;
                 $("main").append(template);
+                $(".conversacion-del-chat").animate({ scrollTop: $('.conversacion-del-chat')[0].scrollHeight }, 1000);
 
                 //Pendiente crear isset($_GET("ahora")) en acciones_mensajes
                 iniciaChat = setInterval(function() {
@@ -82,6 +84,7 @@ document.addEventListener("click", function(e) {
                                 `;
                             })
                             $(".conversacion-del-chat").append(template);
+                            $(".conversacion-del-chat").animate({ scrollTop: $('.conversacion-del-chat')[0].scrollHeight }, 1000);
                         }
                     }
                     xhr.send();

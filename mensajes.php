@@ -88,7 +88,7 @@
             ?>
             <a href="#">
             <div class="tarjeta-contacto">
-                <p><?php echo $contacto["nombre"]?></p>    
+                <a href='#'><p class="hilo-mensajes"><?php echo $contacto["nombre"]?><span><?php echo $contacto["id"] ?></span></p></a>    
                 <p><img class="imagen-listado-contacto" src="<?php echo $contacto["imagen"]?>" alt="Imagen de contacto"></p>
             </div>
             </a>

@@ -1011,6 +1011,9 @@ input:-webkit-autofill {
     .tarjeta-contacto {
         width: 60%;
     }
+    .panel {
+        min-height: 70vh;
+    }
 }
 
 
