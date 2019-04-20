@@ -6,6 +6,7 @@ class mensaje extends DBAbstractModel {
     private $id_destino;
     private $contenido;
     private $fecha_mensaje;
+    private $timestamp;
 
     function __construct() {
         $this->db_name = 'independenciame';	
@@ -20,8 +21,13 @@ class mensaje extends DBAbstractModel {
         return $this->rows;
     }
 
-    public function getHiloNuevos($id_mia, $id_remota, $time) {
-
+    public function getHilosNuevos($id_mia, $id_remota) {
+        $this->query = "
+        SELECT * FROM mensaje
+        WHERE id_origen = $id_remota AND id_destino = $id_mia AND leido = 0
+        ";
+        $this->get_results_from_query();
+        return $this->rows;
     }
 
     public function get($id_usuario = ""){
@@ -35,8 +41,15 @@ class mensaje extends DBAbstractModel {
 
     public function set($id_remota = "", $id_mia = "", $contenido = "") {
         $this->query = "
-        INSERT INTO mensaje (id_origen, id_destino, contenido, fecha_mensaje) 
-        VALUES ($id_mia, $id_remota, '$contenido', '2019-12-04')
+        INSERT INTO mensaje (id_origen, id_destino, contenido, fecha_mensaje, leido) 
+        VALUES ($id_mia, $id_remota, '$contenido', '2019-12-04', 0)
+        ";
+        $this->execute_single_query();
+    }
+
+    public function editLeido($id) {
+        $this->query = "
+        UPDATE mensaje SET leido = 1 WHERE id_mensaje = $id
         ";
         $this->execute_single_query();
     }

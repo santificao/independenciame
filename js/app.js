@@ -1,6 +1,6 @@
 /** JavaScript */
 
-//Variable global para iniciar y detener la conexión asíncrona para iniciar y para el chat
+//Variable global para iniciar y detener la conexión asíncrona para iniciar y cerrar el chat
 var iniciaChat;
 
 
@@ -22,7 +22,7 @@ document.addEventListener("click", function(e) {
         xhr.open("POST", "acciones_mensajes.php?mensaje=" + mensaje + "&idRemota=" + id, true);
         xhr.onload = function() {
             if (this.status === 200) {
-                var template = `<p class='R'>${mensaje}</p>`;
+                var template = `<p class='R'><span class='remarcar'>${mensaje}</span></p>`;
                 $(".conversacion-del-chat").append(template);
             }
         }
@@ -48,9 +48,15 @@ document.addEventListener("click", function(e) {
 
                 respuesta.forEach(msg => {
                     var posMsg = msg.ubicar;
-                    template += `
-                        <p class='${posMsg}'>${msg.contenido}</p>
+                    if (posMsg == 'R') {
+                        template += `
+                        <p class='${posMsg}'><span class='remarcar'>${msg.contenido}</span></p>
                     `;
+                    } else {
+                        template += `
+                        <p class='${posMsg} remarcar-otro'> ${msg.contenido}</p>
+                    `;
+                    }
                 })
                 template += `
                     </div>
@@ -62,9 +68,25 @@ document.addEventListener("click", function(e) {
                 `;
                 $("main").append(template);
 
+                //Pendiente crear isset($_GET("ahora")) en acciones_mensajes
                 iniciaChat = setInterval(function() {
-                    console.log("hola");
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "acciones_mensajes.php?idRemota=" + id + "&recargar=true", true);
+                    xhr.onload = function() {
+                        if (this.status === 200) {
+                            template = '';
+                            const respuesta = JSON.parse(xhr.responseText);
+                            respuesta.forEach(msg => {
+                                template += `
+                                    <p class='L remarcar-otro'>${msg.contenido}</p>
+                                `;
+                            })
+                            $(".conversacion-del-chat").append(template);
+                        }
+                    }
+                    xhr.send();
                 }, 3000);
+
             }
         }
 

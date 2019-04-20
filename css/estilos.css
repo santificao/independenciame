@@ -26,6 +26,14 @@ font-family: 'PT Sans', sans-serif;
     font-weight: bold;
 }
 
+.remarcar {
+    color: var(--colorPrincipalMedio);
+}
+
+.remarcar-otro {
+    color: var(--colorPrincipal);
+}
+
 .error {
     font-family: 'Oswald', sans-serif;
     color: rgb(250, 10, 10);
