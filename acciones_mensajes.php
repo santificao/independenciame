@@ -11,13 +11,13 @@ if (isset($_GET["recargar"])) {
     $mensajes2JSON = array();  
     $mensaje = new Mensaje();
 
-    $mensajes = $mensaje->getHilosNuevos($id_mia, $id_remota);
+    $mensajes = $mensaje->get_hilos_nuevos($id_mia, $id_remota);
 
     if (!empty($mensajes)) {
         foreach ($mensajes as $mensaje) {
             array_push($mensajes2JSON, array("contenido" => $mensaje["contenido"]));
             $mensajeAux = new Mensaje();
-            $mensajeAux->editLeido($mensaje["id_mensaje"]);
+            $mensajeAux->edit_leido($mensaje["id_mensaje"]);
         }
         echo (json_encode($mensajes2JSON));
     }
@@ -30,7 +30,7 @@ if (isset($_GET["recargar"])) {
     $mensajes2JSON = array();
 
     $mensaje = new Mensaje();
-    $mensajes = $mensaje->getHilo($id_mia, $id_remota);
+    $mensajes = $mensaje->get_hilo($id_mia, $id_remota);
     
     foreach ($mensajes as $mensaje) {
         if ($mensaje["id_origen"] == $id_mia) {
@@ -38,7 +38,7 @@ if (isset($_GET["recargar"])) {
         } else {
             array_push($mensajes2JSON, array("ubicar" => "L", "contenido" => $mensaje["contenido"]));
             $mensajeAux = new Mensaje();
-            $mensajeAux->editLeido($mensaje["id_mensaje"]);
+            $mensajeAux->edit_leido($mensaje["id_mensaje"]);
         }
     }
     echo (json_encode($mensajes2JSON));

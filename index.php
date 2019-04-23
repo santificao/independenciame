@@ -24,12 +24,14 @@ if(isset($_SESSION["usuario"])) {
         case 3:
             include("notificaciones.php");
             break;
+        case 4:
+            include("configuracion.php");
+            break;
         case 5:
             include("solicitud_asistencia.php");
             break;
         case 6: 
-            Sesion::cierra_sesion();
-            header("Location: index.php");
+            include("cerrar_sesion.php");
             break;
     }
 } else  {

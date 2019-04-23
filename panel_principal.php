@@ -15,7 +15,16 @@
             </div>
 
             <div class="alerta-mensajes">
-                <p><span><i class="far fa-envelope"></i></span> Nuevos mensajes ( <span class="nuevos-mensajes">0</span> )</p>
+                <p><span><i class="far fa-envelope"></i></span> Nuevos mensajes ( <span class="nuevos-mensajes"><?php
+                    $mensaje = new mensaje();           
+                    $mensajes = $mensaje->get_cuantos_mensajes_nuevos($_SESSION["usuario"]["id"]);
+
+                    if ($mensajes > 0 ) {
+                        echo "<a class='enlace' href='index.php?p=3'>$mensajes</a>";
+                    } else {
+                        echo $mensajes;
+                    }
+                ?></span> )</p>
 
                 <a href="index.php?p=2" class="enlace">ver todos los mensajes</a>
             </div>
@@ -24,7 +33,7 @@
         <aside class="datos contenido">
             <h2>Resumen del perfil</h2>
             <div class="personales">
-                <p><img src="<?php echo $_SESSION["usuario"]["url_imagen"]?>"></p>
+                <p><img src="<?php $usuario = new usuario(); echo $usuario->get_url_imagen($_SESSION["usuario"]["id"])[0]["url_imagen"]?>"></p>
                 <p><span class="eti">Nombre:</span> <?php echo $_SESSION["usuario"]["nombre"]?></p>
                 <p><span class="eti">Apellidos:</span> <?php echo $_SESSION["usuario"]["apellidos"]?></p>
                 <p><span class="eti">Población:</span> <?php echo $_SESSION["usuario"]["ciudad"]?></p>

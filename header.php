@@ -84,7 +84,7 @@ if (isset($_POST["inicia_sesion"])) {
 
                     <li><a href="index.php?p=6">Cerrar sesión</a></li>
                 </ul>
-                <span class="menu-movil"><img src="<?php echo $_SESSION["usuario"]["url_imagen"]?>"> <i class="fas fa-angle-down"></i></span> 
+                <span class="menu-movil"><img src="<?php $usuario = new usuario(); echo $usuario->get_url_imagen($_SESSION["usuario"]["id"])[0]["url_imagen"]?>"> <i class="fas fa-angle-down"></i></span> 
                 <?php
                 }
                 ?>

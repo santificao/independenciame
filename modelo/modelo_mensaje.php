@@ -12,7 +12,7 @@ class mensaje extends DBAbstractModel {
         $this->db_name = 'independenciame';	
     }
 
-    public function getHilo($id_mia, $id_remota) {
+    public function get_hilo($id_mia, $id_remota) {
         $this->query = "
         SELECT * FROM mensaje
         WHERE id_origen = $id_mia AND id_destino = $id_remota OR id_origen = $id_remota AND id_destino = $id_mia
@@ -21,7 +21,7 @@ class mensaje extends DBAbstractModel {
         return $this->rows;
     }
 
-    public function getHilosNuevos($id_mia, $id_remota) {
+    public function get_hilos_nuevos($id_mia, $id_remota) {
         $this->query = "
         SELECT * FROM mensaje
         WHERE id_origen = $id_remota AND id_destino = $id_mia AND leido = 0
@@ -47,11 +47,20 @@ class mensaje extends DBAbstractModel {
         $this->execute_single_query();
     }
 
-    public function editLeido($id) {
+    public function edit_leido($id) {
         $this->query = "
         UPDATE mensaje SET leido = 1 WHERE id_mensaje = $id
         ";
         $this->execute_single_query();
+    }
+
+    public function get_cuantos_mensajes_nuevos($id_mia) {
+        $this->query = "
+        SELECT DISTINCT id_origen FROM mensaje WHERE id_destino = $id_mia AND leido = 0 
+        ";
+        $this->get_results_from_query();
+
+        return count($this->rows);
     }
     
     public function edit() {

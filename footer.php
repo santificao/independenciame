@@ -5,7 +5,7 @@
             <div class="contacto-footer contenido">
                 <div class="info-candidatos">
                     <h3>Trabaja <span>con nosotros</span></h3>
-                    <p class="cursiva">Si deseas formar parte de nuestro equipo de trabajo <a href="#">regístrate aquí</a> . En caso de requerir información adicional, un miembro de nuestro equipo se pondrá en contacto contigo en un plazo máximo de 24/48h</p>
+                    <p class="cursiva">Si deseas formar parte de nuestro equipo de trabajo <a href="index.php?p=3">regístrate aquí</a> . En caso de requerir información adicional, un miembro de nuestro equipo se pondrá en contacto contigo en un plazo máximo de 24/48h</p>
                 </div>
                 <div class="info-mail">
                     <h3>Contáctanos</h3>

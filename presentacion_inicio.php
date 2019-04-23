@@ -5,7 +5,7 @@
 
                 <p><span class="cursiva">Independénciame</span> es una plataforma creada para conectar <span class="negrita">voluntarios</span> y <span class="negrita">trabajadores cualificados</span> con personas en situación de <span class="negrita">dependencia</span>.</p>
 
-                <p>Si necesitas ayuda para superar tu vida diaria o tienes algún familiar que la necesite <a href="#">regístrate</a> y encuentra el asistente adecuado a tus necesidades.</p>
+                <p>Si necesitas ayuda para superar tu vida diaria o tienes algún familiar que la necesite <a href="index.php?p=2">regístrate</a> y encuentra el asistente adecuado a tus necesidades.</p>
             </div>
         </article>
 

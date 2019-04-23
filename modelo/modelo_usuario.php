@@ -59,6 +59,14 @@ class Usuario extends DBAbstractModel {
 		$this->get_results_from_query();
 		return $this->rows;
 	}
+
+	public function get_url_imagen($id) {
+		$this->query = "
+		SELECT url_imagen
+		FROM datos_usuario WHERE id_usuario = $id";
+		$this->get_results_from_query();
+		return $this->rows;
+	}
 	
 	/**Hay que corregirlo */
 	public function set($prod_data=array()) {
@@ -79,6 +87,14 @@ class Usuario extends DBAbstractModel {
         }
 	}
 
+	public function modifica_foto($url, $id_usuario) {
+		$this->query = "
+		UPDATE datos_usuario
+		SET url_imagen = '$url'
+		WHERE id_usuario = $id_usuario
+		";
+		$this->execute_single_query();
+	}
 
     /**Hay que corregirlo */
 	public function edit($prod_data=array()) {

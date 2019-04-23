@@ -70,7 +70,7 @@
                 foreach($listado_mensajes as $mensaje) {
                     $usuario = new Usuario();
                     $usuario->get_usuario_por_id($mensaje);
-                    echo "<a href='#'><p class='hilo-mensajes'>$usuario->nombre<span>$mensaje</span></p></a>";
+                    echo "<a><p class='hilo-mensajes'>$usuario->nombre<span>$mensaje</span></p></a>";
                 }
             }
             ?>
@@ -86,12 +86,10 @@
             } else {
                 foreach($listado_contactos as $contacto) {
             ?>
-            <a href="#">
             <div class="tarjeta-contacto">
-                <a href='#'><p class="hilo-mensajes"><?php echo $contacto["nombre"]?><span><?php echo $contacto["id"] ?></span></p></a>    
+                <a><p class="hilo-mensajes"><?php echo $contacto["nombre"]?><span><?php echo $contacto["id"] ?></span></p></a>    
                 <p><img class="imagen-listado-contacto" src="<?php echo $contacto["imagen"]?>" alt="Imagen de contacto"></p>
             </div>
-            </a>
             <?php
             }
         }

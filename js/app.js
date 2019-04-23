@@ -1,14 +1,16 @@
-/** JavaScript */
+/**
+ * CONJUNTO DE FUNCIONES PARA EL CHAT 
+ */
 
 //Variable global para iniciar y detener la conexión asíncrona para iniciar y cerrar el chat
 var iniciaChat;
-
 
 //Función para cerrar chat
 document.addEventListener("click", function(e) {
     if (e.target.classList.contains("cerrar")) {
         var chat = document.querySelector(".chat");
         chat.parentNode.removeChild(chat);
+        location.reload();
         clearInterval(iniciaChat);
     }
 });
@@ -68,9 +70,8 @@ document.addEventListener("click", function(e) {
                 </div>
                 `;
                 $("main").append(template);
-                $(".conversacion-del-chat").animate({ scrollTop: $('.conversacion-del-chat')[0].scrollHeight }, 1000);
+                $(".conversacion-del-chat").animate({ scrollTop: $('.conversacion-del-chat')[0].scrollHeight }, 3);
 
-                //Pendiente crear isset($_GET("ahora")) en acciones_mensajes
                 iniciaChat = setInterval(function() {
                     var xhr = new XMLHttpRequest();
                     xhr.open("GET", "acciones_mensajes.php?idRemota=" + id + "&recargar=true", true);
@@ -96,6 +97,14 @@ document.addEventListener("click", function(e) {
         xhr.send();
     }
 });
+
+//-----> Fin funciones del chat <-----//
+
+
+
+/**
+ * FUNCIONES PARA LA SOLICITUD DE ASISTENCIA
+ */
 
 //Función llamada desde el formulario de solicitar el tipo de asistencia con el tipo de evento "onSubmit"
 function solicitarAsistencia(e) {
@@ -167,8 +176,22 @@ function solicitarAsistencia(e) {
     `;
 }
 
+//-----> Fin funciones de envío de solicitud <-----//
 
-/** JQuery */
+
+/**
+ * FUNCIONES PARA VALIDAR FORMULARIOS
+ */
+
+
+//-----> Fin funciones para validar formularios <-----//
+
+
+
+/** 
+ * FUNCIONES Y ANIMACIONES EXCLUSIVAS JQuery 
+ **/
+
 $(document).ready(function() {
 
     /**Efectos personalizados para plugin lightBox */
