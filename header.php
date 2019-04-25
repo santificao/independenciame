@@ -17,8 +17,15 @@ if (isset($_POST["inicia_sesion"])) {
     $usuario = new Usuario();
     $usuario->get($nombreUsuario, $contraseña);
     
-    if ($usuario->nombre != "") {  
-        Sesion::inicia_sesion($usuario);
+    
+    if ($usuario->nombre != "") { 
+        if ($usuario->gestionado == 1) {
+            Sesion::inicia_sesion($usuario);
+        } else if ($usuario->gestionado == -1) {
+            $alerta = generar_alerta("Lo sentimos, tu solicitud ha sido cancelada...", "error");
+        } else {
+            $alerta = generar_alerta("Se está gestionando tu solicitud, en breve pasarás a formar parte de nuestra comunidad", "error");
+        }  
     } else {
         $alerta = generar_alerta("Usuario o contraseña incorrectos", "error");
     }
@@ -79,6 +86,16 @@ if (isset($_POST["inicia_sesion"])) {
                     ?>  
                      <li><a href="index.php?p=5">Solicitar asistencia</a></li>
                     <?php
+                    } else if ($_SESSION["usuario"]["tipo_usuario"] == "A") {
+                    ?>  
+                     <li><a href="index.php?p=5">Nuevas solicitudes de usuario <?php
+                     $usuario = new Usuario();
+                     $nuevas = $usuario->get_hay_nuevas_solicitudes_usuarios();
+                     if($nuevas) {
+                         echo "<i class='far fa-bell'></i>";
+                     }
+                     ?></a></li>
+                    <?php 
                     }
                     ?>
 

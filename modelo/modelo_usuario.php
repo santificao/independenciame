@@ -15,7 +15,8 @@ class Usuario extends DBAbstractModel {
     public $contrasenia;
     public $tipo_usuario;
     public $url_imagen;
-
+	public $gestionado;
+	
 	function __construct() {
 		$this->db_name = 'independenciame';	
 	}
@@ -52,6 +53,26 @@ class Usuario extends DBAbstractModel {
         } 
 	}
 	
+	public function get_solicitudes_usuarios_nuevos() {
+		$this->query = "
+		SELECT *
+		FROM datos_usuario WHERE gestionado = 0";
+		$this->get_results_from_query();
+		return $this->rows;
+	}
+
+	public function get_hay_nuevas_solicitudes_usuarios() {
+		$this->query = "
+		SELECT *
+		FROM datos_usuario WHERE gestionado = 0";
+		$this->get_results_from_query();
+		
+		if(count($this->rows) > 0) {
+			return true;
+		} 
+		return false;
+	}
+
 	public function get_todos() {
 		$this->query = "
 		SELECT *
@@ -87,6 +108,15 @@ class Usuario extends DBAbstractModel {
         }
 	}
 
+	public function gestionar_solicitud($accion) {
+		$this->query = "
+		UPDATE datos_usuario
+		SET gestionado = $accion
+		WHERE id_usuario = $this->id_usuario
+		";
+		$this->execute_single_query();
+	}
+
 	public function modifica_foto($url, $id_usuario) {
 		$this->query = "
 		UPDATE datos_usuario
@@ -96,17 +126,26 @@ class Usuario extends DBAbstractModel {
 		$this->execute_single_query();
 	}
 
-    /**Hay que corregirlo */
+	public function modifica_contrasenia($contrasenia, $id_usuario) {
+		$this->query = "
+		UPDATE datos_usuario
+		SET contrasenia = '$contrasenia'
+		WHERE id_usuario = $id_usuario
+		";
+		$this->execute_single_query();
+	}
+
 	public function edit($prod_data=array()) {
 		foreach ($prod_data as $campo=>$valor):
 			$$campo = $valor;
 		endforeach;
 		$this->query = "
-			UPDATE productos
-			SET pvp='$pvp',
-			descripcion='$descripcion',
-			existencias='$existencias'
-			WHERE cod_prod = '$cod_prod'
+			UPDATE datos_usuario
+			SET ciudad='$ciudad',
+			direccion='$direccion',
+			telefono='$telefono',
+			email='$email'
+			WHERE id_usuario = $id_usuario
 		";
 		$this->execute_single_query();
 		}

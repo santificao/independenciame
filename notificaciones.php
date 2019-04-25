@@ -80,7 +80,7 @@ if (isset($_POST["aceptar_solicitud"]) || isset($_POST["rechazar_solicitud"])) {
     <?php
 
     if (empty($listado_solicitudes)) {
-        echo "<h2>No tiene ninguna notificación</h2>";
+        echo "<h2>No tienes ninguna notificación</h2>";
     } else {
         echo "<h2>Tus notificaciones</h2>";
         foreach($listado_solicitudes as $solicitud) {

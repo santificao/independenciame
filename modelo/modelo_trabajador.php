@@ -30,5 +30,13 @@ class Trabajador extends Usuario {
 		$this->get_results_from_query();
 		return $this->rows;
 	}
+
+	public function modificar_visible($visible, $id_usuario) {
+		$this->query = "
+		UPDATE trabajador SET visible = $visible 
+		WHERE id_usuario = $id_usuario
+		";
+		$this->execute_single_query();
+	}
 }
 ?>

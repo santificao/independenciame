@@ -55,7 +55,11 @@ if(isset($_POST["envia_solicitud"])) {
                 <option value="1">Teleasistencia</option>
                 <option value="2">Básica (recados, ayuda hogar...)</option>
                 <option value="3">Intermedia (asistencia higiénico/sanitaria)</option>
-                <option value="4">Alta (pacientes con gran dependencia)</option>            
+                <?php
+                if ($_SESSION["usuario"]["grado_dependencia"] == 3) {
+                    echo "<option value='4'>Alta (pacientes con gran dependencia)</option>";
+                } 
+                ?>      
             </select>
 
             <input class="boton-submit" type="submit" value="Iniciar busqueda" name="inicia_solicitud">

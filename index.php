@@ -1,5 +1,5 @@
 <?php
-include_once("header.php");
+include("header.php");
 
 $p = 0;
 
@@ -28,7 +28,12 @@ if(isset($_SESSION["usuario"])) {
             include("configuracion.php");
             break;
         case 5:
-            include("solicitud_asistencia.php");
+            switch($_SESSION["usuario"]["tipo_usuario"]) {
+                case 'A': include("solicitud_usuario_nuevo.php");
+                    break;
+                case 'C': include("solicitud_asistencia.php");
+                    break;
+            } 
             break;
         case 6: 
             include("cerrar_sesion.php");

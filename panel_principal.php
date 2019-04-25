@@ -36,7 +36,7 @@
                 <p><img src="<?php $usuario = new usuario(); echo $usuario->get_url_imagen($_SESSION["usuario"]["id"])[0]["url_imagen"]?>"></p>
                 <p><span class="eti">Nombre:</span> <?php echo $_SESSION["usuario"]["nombre"]?></p>
                 <p><span class="eti">Apellidos:</span> <?php echo $_SESSION["usuario"]["apellidos"]?></p>
-                <p><span class="eti">Población:</span> <?php echo $_SESSION["usuario"]["ciudad"]?></p>
+                <p><span class="eti">Población:</span> <?php $usuario = new Usuario(); $usuario->get_usuario_por_id($_SESSION["usuario"]["id"]); echo $usuario->ciudad?></p>
                 <p><span class="eti">Edad:</span> <?php echo $_SESSION["usuario"]["edad"]?></p>
 
                 <?php
@@ -57,11 +57,10 @@
                         case 2:
                             $tipo_trabajador = "Trabajador";
                             break;
-                        case 3:
-                            $tipo_trabajador = "Trabajador +";
-                            break;
                     }
-                    $visible = $_SESSION["usuario"]["visible"];
+                    $usuario = new Trabajador();
+                    $usuario->datos_trabajador($_SESSION["usuario"]["id"]);
+                    $visible = $usuario->visible;
                     if ($visible == 1) {
                         $visible = "Si";
                     } else {

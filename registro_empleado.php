@@ -23,14 +23,10 @@
                     <select name="tipo_empleado" id="tipo_empleado">
                         <option value="1">Voluntario</option>
                         <option value="2">Trabajador cualificado</option>
-                        <option value="3">Trabajador cualificado (disponibilidad +)</option>
                     </select>
                 <div class="formacion">
                     <legend>Formación académica</legend>
                     <label for="formacion">Título </label> <input type="text" name="titulo_formativo" id="titulo_formativo">
-
-                    <legend>Experiencia laboral</legend>
-                    <label for="experiencia">Experiencia 1</label> <input type="text" name="experiencia_1" id="experiencia_1">
                 </div>
             </div>
 
