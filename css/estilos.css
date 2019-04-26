@@ -45,6 +45,13 @@ body main .error {
     margin-bottom: .5em;
 }
 
+.error-validacion p {
+    text-align: center;
+    color: rgb(250, 10, 10);
+    font-family: 'Oswald', sans-serif;
+    margin: .5em 0 1.5em 0;
+}
+
 body main .exito {
     font-family: 'Oswald', sans-serif;
     color: var(--colorPrincipalClaro);
@@ -161,9 +168,9 @@ h2 {
 }
 
 .menu i {
-    top: 19px;
-    font-size: 13px;
-    margin-left: .7rem;
+    top: 20px;
+    font-size: 8px;
+    margin-left: 7px;
     position: absolute;
     animation-name: campana;
     animation-duration: 2s;
@@ -172,7 +179,7 @@ h2 {
 
 @keyframes campana {
     0% {
-        color: rgba(120, 120, 120, 0.90)
+        color: rgba(255, 255, 256, 0);
     }
     100% {
         color: #fff;
@@ -251,7 +258,7 @@ h2 {
     }
     @keyframes campana {
         0% {
-            color: rgb(89, 139, 93);
+            color: rgba(19, 54, 53, 0);
         }
         100% {
             color: var(--colorPrincipal);

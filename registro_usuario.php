@@ -3,7 +3,7 @@
         <h2>¡Hola!</h2> 
         <p>Estás a unos minutos de formar parte de nuestra comunidad</p> 
 
-        <form class="formulario" action="<?php $_SERVER["PHP_SELF"]?>" method="post">
+        <form class="formulario cuenta-paciente" action="<?php $_SERVER["PHP_SELF"]?>" method="post" onSubmit="validarFormulario(event)">
             
             <div class="columna1">
                 <legend>Datos personales</legend>
@@ -11,6 +11,7 @@
                 <label for="apellido1">Apellido 1 </label> <input type="text" name="apellido_1" id="apellido_1">
                 <label for="apellido2">Apellido 2 </label> <input type="text" name="apellido_2" id="apellido_2">
                 <label for="nacimiento">Fecha de nacimiento </label> <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+                <label for="ciudad">Ciudad </label> <input type="text" name="ciudad" id="ciudad">
                 <label for="direccion">Dirección </label> <input type="text" name="direccion" id="direccion">
                 <label for="telefono">Teléfono </label> <input type="phone" name="telefono" id="telefono">
                 <label for="dni">DNI </label> <input type="text" name="dni" id="dni">

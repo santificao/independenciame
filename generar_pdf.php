@@ -11,14 +11,15 @@ class PDF extends FPDF
     function Header()
     {
             // Arial bold 15
-        $this->SetFont('Arial', 'B', 13);
+        $this->SetFont('Arial', 'B', 8);
         $this->SetTextColor(19,54,53);
 
             // Título
-        $this->Cell(0, 7, 'INDEPENDENCIAME - nueva solicitud -', 0, 0, "C");//El 0 de ancho de la celda es para que coja todo el ancho de la página
-
+        $this->Image('PDF/titulo.jpg' , 60 , 12, 'JPG', '');
+    
         // Salto de línea
-        $this->Ln(20);
+        $this->Ln(5);
+        $this->Cell(0, 0, '- nueva solicitud -', 0, 1, "C");//El 0 de ancho de la celda es para que coja todo el ancho de la página
     }
         
         // Pie de página
@@ -40,7 +41,6 @@ class PDF extends FPDF
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->setMargins(20, 30, 20);
-$pdf->AliasNbPages();//Para formato 1 de 2 pag...2 de 2 ...
 $pdf->AddPage();
 
 $usuario = new Usuario();
@@ -87,9 +87,13 @@ switch($usuario->tipo_usuario) {
 
 $pdf->SetTextColor(19,54,53);
 $pdf->SetFont('Arial', 'B', 13);
+$y = $pdf->GetY();
+$pdf->SetY($y+15);
 $pdf->Cell(0, 7, 'Datos personales:', 0, 1, "L");
+
 $pdf->SetTextColor(19, 19, 19);
 $pdf->SetFont('Times', '', 12);
+
 $pdf->Cell(0, 7, 'Nombre: '.$usuario->nombre, 0, 1, "L");
 $pdf->Cell(0, 7, 'Primer apellido: '.$usuario->apellido_1, 0, 1, "L");
 $pdf->Cell(0, 7, 'Segundo apellido: '.$usuario->apellido_2, 0, 1, "L");
@@ -103,6 +107,7 @@ $pdf->SetY($y+15);
 
 $pdf->SetTextColor(19,54,53);
 $pdf->SetFont('Arial', 'B', 13);
+
 $pdf->Cell(0, 7, 'Datos de la cuenta:', 0, 1, "L");
 $pdf->SetTextColor(19, 19, 19);
 $pdf->SetFont('Times', '', 12);

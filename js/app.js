@@ -100,7 +100,155 @@ document.addEventListener("click", function(e) {
 
 //-----> Fin funciones del chat <-----//
 
+/**
+ * FUNCIONES PARA VALIDAR FORMULARIOS
+ */
 
+function validarFormulario(e) {
+    var validaFormulario = true;
+    e.preventDefault();
+    var tipo;
+    var campo = 0;
+    if (e.target.classList.contains("cuenta-paciente")) {
+        tipo = 'paciente';
+    } else if (e.target.classList.contains("cuenta-empleado")) {
+        tipo = 'asistente';
+    }
+    var nombre = e.target[campo++].value;
+    var apellido1 = e.target[campo++].value;
+    var apellido2 = e.target[campo++].value;
+    var fecha = e.target[campo++].value;
+    var edad = calcularEdad(fecha);
+    var ciudad = e.target[campo++].value;
+    var direccion = e.target[campo++].value;
+    var telefono = e.target[campo++].value;
+    var dni = e.target[campo++].value;
+    if (tipo == 'asistente') {
+        campo += 2;
+    }
+    var usuario = e.target[campo++].value;
+    var email = e.target[campo++].value;
+    var contrasenia = e.target[campo++].value;
+    var contrasenia2 = e.target[campo++].value;
+
+    if (tipo == 'paciente') {
+        var grado = e.target[campo].options[e.target[campo].selectedIndex].value;
+    }
+    if (tipo == 'asistente') {
+        var tipoAsistente = e.target[8].options[e.target[8].selectedIndex].value;
+        if (tipoAsistente == 2) {
+            var formacion = e.target[9].value;
+        }
+    }
+
+    var camposTexto = comprobarQueCamposTenganTexto(nombre, apellido1, apellido2, ciudad, direccion, usuario);
+    var dniCorrecto = comprobarDni(dni);
+    var telefonoCorrecto = comprobarTelefono(telefono);
+    var emailCorrecto = comprobarEmail(email);
+    var contraseniaCorrecta = comprobarContrasenia(contrasenia);
+
+    $('.error-validacion').remove();
+    $('main').append('<div class="error-validacion"></div>');
+
+    if (!camposTexto) {
+        $('.error-validacion').append('<p>Datos personales y nombre de usuario obligatorio</p>');
+        validarFormulario = false;
+    }
+    if (!dniCorrecto) {
+        $('.error-validacion').append('<p>Dni incorrecto</p>');
+        validarFormulario = false;
+    }
+    if (!telefonoCorrecto) {
+        $('.error-validacion').append('<p>Formato teléfono incorrecto</p>');
+        validarFormulario = false;
+    }
+    if (!emailCorrecto) {
+        $('.error-validacion').append('<p>Email incorrecto</p>');
+        validarFormulario = false;
+    }
+    setTimeout(function() {
+        $('.error-validacion').remove();
+    }, 2000);
+
+    if (validarFormulario) {
+        $.ajax({
+            type: 'POST',
+            url: 'guardar_datos_usuario.php',
+            data: { 'nombre': nombre, 'apellido1': apellido1, 'apellido2': apellido2, 'fecha': fecha, 'ciudad': ciudad, 'direccion': direccion, 'telefono': telefono, 'dni': dni, 'email': email, 'tipo': tipo, 'usuario': usuario, 'contrasenia': contrasenia, 'grado': grado, 'tipoAsistente': tipoAsistente },
+            success: function() {
+                $('main').append('<p>Usuario creado</p>');
+            }
+        });
+    }
+
+}
+
+function calcularEdad(fecha) {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
+
+function comprobarQueCamposTenganTexto(nombre, apellido1, apellido2, ciudad, direccion, usuario) {
+    if (nombre != '' && apellido1 != '' && apellido2 != '' && ciudad != '' && direccion != '' && usuario != '') {
+        return true;
+    }
+    return false;
+}
+
+function comprobarDni(dni) {
+    var numero,
+        letDni, letra;
+    var expRegDni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+    dni = dni.toUpperCase();
+
+    if (expRegDni.test(dni)) {
+        numero = dni.substr(0, dni.length - 1);
+        numero = numero.replace('X', 0);
+        numero = numero.replace('Y', 1);
+        numero = numero.replace('Z', 2);
+        letDni = dni.substr(dni.length - 1, 1);
+        numero = numero % 23;
+        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+        letra = letra.substring(numero, numero + 1);
+        if (letra !=
+            letDni) {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
+function comprobarTelefono(telefono) {
+    var expRegTelf = /^[9|6|7|8]{1}([\d]{2}[-]*){3}[\d]{2}$/;
+    if (expRegTelf.test(telefono)) {
+        return true;
+    }
+    return false;
+}
+
+function comprobarEmail(email) {
+    var expRegMail = /^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/;
+    if (expRegMail.test(email)) {
+        return true;
+    }
+    return false;
+}
+
+function comprobarContrasenia(contrasenia) {
+
+}
 
 /**
  * FUNCIONES PARA LA SOLICITUD DE ASISTENCIA

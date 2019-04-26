@@ -90,22 +90,15 @@ class Usuario extends DBAbstractModel {
 	}
 	
 	/**Hay que corregirlo */
-	public function set($prod_data=array()) {
-		if(array_key_exists('dni', $dni)) {
-            
-			$this->get($prod_data['cod_prod']); //leemos el producto por si existe, no crearlo de nuevo
-			
-			if($prod_data['cod_prod'] != $this->cod_prod) {
-				foreach ($prod_data as $campo=>$valor) {
-					$$campo = $valor;
-                }
-				$this->query = "
-                INSERT INTO datos_usuario (apellido_1, apellido_2, ciudad, contrasenia, direccion, dni, email, fecha_nacimiento, nombre, telefono, tipo_usuario, usuario) 
-                VALUES ('$apellido_1', '$apellido_2', '$ciudad', '$contrasenia','$direccion', '$dni', '$email', '$fecha_nacimiento', '$nombre', '$telefono', '$tipo_usuario', '$usuario')
-				";
-				$this->execute_single_query();
-            }
+	public function set($usuario_nuevo=array()) {
+		foreach ($usuario_nuevo as $campo=>$valor) {
+			$$campo = $valor;
         }
+		$this->query = "
+        INSERT INTO datos_usuario (apellido_1, apellido_2, ciudad, contrasenia, direccion, dni, email, fecha_nacimiento, nombre, telefono, tipo_usuario, usuario, url_imagen) 
+        VALUES ('$apellido_1', '$apellido_2', '$ciudad', '$contrasenia','$direccion', '$dni', '$email', '$fecha_nacimiento', '$nombre', '$telefono', '$tipo_usuario', '$usuario', 'img/fotos_perfil/default.jpg')
+		";
+		$this->execute_single_query();
 	}
 
 	public function gestionar_solicitud($accion) {
