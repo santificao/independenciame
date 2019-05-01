@@ -105,7 +105,7 @@ document.addEventListener("click", function(e) {
  */
 
 function validarFormulario(e) {
-    var validaFormulario = true;
+    var validarFormulario = true;
     e.preventDefault();
     var tipo;
     var campo = 0;
@@ -114,6 +114,7 @@ function validarFormulario(e) {
     } else if (e.target.classList.contains("cuenta-empleado")) {
         tipo = 'asistente';
     }
+
     var nombre = e.target[campo++].value;
     var apellido1 = e.target[campo++].value;
     var apellido2 = e.target[campo++].value;
@@ -150,35 +151,34 @@ function validarFormulario(e) {
     $('.error-validacion').remove();
     $('main').append('<div class="error-validacion"></div>');
 
-    if (!camposTexto) {
-        $('.error-validacion').append('<p>Datos personales y nombre de usuario obligatorio</p>');
+    if (tipo == 'asistente' && edad < 18) {
+        $('.error-validacion').append('<p>Lo sentimos, pero tienes que ser mayor de edad para inscribirte como asistente</p>');
         validarFormulario = false;
+    } else {
+        if (!camposTexto) {
+            $('.error-validacion').append('<p>Datos personales y nombre de usuario obligatorio</p>');
+            validarFormulario = false;
+        }
+        if (!dniCorrecto) {
+            $('.error-validacion').append('<p>Dni incorrecto</p>');
+            validarFormulario = false;
+        }
+        if (!telefonoCorrecto) {
+            $('.error-validacion').append('<p>Formato teléfono incorrecto</p>');
+            validarFormulario = false;
+        }
+        if (!emailCorrecto) {
+            $('.error-validacion').append('<p>Email incorrecto</p>');
+            validarFormulario = false;
+        }
     }
-    if (!dniCorrecto) {
-        $('.error-validacion').append('<p>Dni incorrecto</p>');
-        validarFormulario = false;
-    }
-    if (!telefonoCorrecto) {
-        $('.error-validacion').append('<p>Formato teléfono incorrecto</p>');
-        validarFormulario = false;
-    }
-    if (!emailCorrecto) {
-        $('.error-validacion').append('<p>Email incorrecto</p>');
-        validarFormulario = false;
-    }
+
     setTimeout(function() {
         $('.error-validacion').remove();
-    }, 2000);
+    }, 4000);
 
     if (validarFormulario) {
-        $.ajax({
-            type: 'POST',
-            url: 'guardar_datos_usuario.php',
-            data: { 'nombre': nombre, 'apellido1': apellido1, 'apellido2': apellido2, 'fecha': fecha, 'ciudad': ciudad, 'direccion': direccion, 'telefono': telefono, 'dni': dni, 'email': email, 'tipo': tipo, 'usuario': usuario, 'contrasenia': contrasenia, 'grado': grado, 'tipoAsistente': tipoAsistente },
-            success: function() {
-                $('main').append('<p>Usuario creado</p>');
-            }
-        });
+        guardarUsuarioEnBBDD(nombre, apellido1, apellido2, fecha, ciudad, direccion, telefono, dni, tipo, usuario, email, contrasenia, grado, tipoAsistente, formacion);
     }
 
 }
@@ -249,6 +249,34 @@ function comprobarEmail(email) {
 function comprobarContrasenia(contrasenia) {
 
 }
+
+//-----> Fin funciones para validar formularios <-----//
+
+/**
+ * FUNCIÓN PARA PERSISTIR USUARIO EN BBDD
+ */
+
+function guardarUsuarioEnBBDD(nombre, apellido1, apellido2, fecha, ciudad, direccion, telefono, dni, tipo, usuario, email, contrasenia, grado, tipoAsistente, formacion) {
+    $.ajax({
+        type: 'POST',
+        url: 'guardar_datos_usuario.php',
+        data: { 'nombre': nombre, 'apellido1': apellido1, 'apellido2': apellido2, 'fecha': fecha, 'ciudad': ciudad, 'direccion': direccion, 'telefono': telefono, 'dni': dni, 'email': email, 'tipo': tipo, 'usuario': usuario, 'contrasenia': contrasenia, 'grado': grado, 'tipoAsistente': tipoAsistente, 'formacion': formacion },
+        success: function(data) {
+            $('.error-validacion').remove();
+            $('main').append('<div class="error-validacion"></div>');
+            if (data == 'Ok') {
+                $('.error-validacion').append(`<p class='exito'>Usuario registrado con éxito, en un máximo de 48h serán validados tus datos</p>`);
+            } else {
+                $('.error-validacion').append(`<p>${data}</p>`);
+            }
+            setTimeout(function() {
+                $('.error-validacion').remove();
+            }, 4000);
+        }
+    });
+}
+
+
 
 /**
  * FUNCIONES PARA LA SOLICITUD DE ASISTENCIA
@@ -325,15 +353,6 @@ function solicitarAsistencia(e) {
 }
 
 //-----> Fin funciones de envío de solicitud <-----//
-
-
-/**
- * FUNCIONES PARA VALIDAR FORMULARIOS
- */
-
-
-//-----> Fin funciones para validar formularios <-----//
-
 
 
 /** 

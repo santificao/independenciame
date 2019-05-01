@@ -24,21 +24,19 @@ abstract class DBAbstractModel {
 		$this->conn->close();
 	}
 
-	# Ejecutar un query simple del tipo INSERT, DELETE, UPDATE
 	protected function execute_single_query() {
 		$this->open_connection();
 		$this->conn->query($this->query);
 		$this->close_connection();
 	}
 
-	# Traer resultados de una consulta en un Array
 	protected function get_results_from_query() {
 		$this->open_connection();
 		$result = $this->conn->query($this->query);
 		while ($this->rows[] = $result->fetch_assoc());
 		$result->close();
 		$this->close_connection();
-		array_pop($this->rows); /*elimina el false del último fetch_assoc, cuando ya no encuentra más resultados*/
+		array_pop($this->rows);
 }
 }
 

@@ -36,6 +36,21 @@ class Usuario extends DBAbstractModel {
         } 
 	}
 
+	public function get_usuario_por_dni($dni) {
+		$this->query = "
+		SELECT *
+		FROM datos_usuario
+		WHERE dni = '$dni' AND gestionado != -1
+		";
+		$this->get_results_from_query();
+
+		if(count($this->rows) != 0) {
+			foreach ($this->rows[0] as $propiedad=>$valor){
+				$this->$propiedad = $valor;
+			}
+        } 
+	}
+
 	public function get($usuario='', $contrasenia = '') {
 		if($usuario != '' && $contrasenia != '') {
 			$this->query = "
@@ -89,16 +104,24 @@ class Usuario extends DBAbstractModel {
 		return $this->rows;
 	}
 	
-	/**Hay que corregirlo */
 	public function set($usuario_nuevo=array()) {
-		foreach ($usuario_nuevo as $campo=>$valor) {
-			$$campo = $valor;
-        }
-		$this->query = "
-        INSERT INTO datos_usuario (apellido_1, apellido_2, ciudad, contrasenia, direccion, dni, email, fecha_nacimiento, nombre, telefono, tipo_usuario, usuario, url_imagen) 
-        VALUES ('$apellido_1', '$apellido_2', '$ciudad', '$contrasenia','$direccion', '$dni', '$email', '$fecha_nacimiento', '$nombre', '$telefono', '$tipo_usuario', '$usuario', 'img/fotos_perfil/default.jpg')
-		";
-		$this->execute_single_query();
+		$this->get_usuario_por_dni($usuario_nuevo['dni']);
+
+		if($usuario_nuevo['dni'] != $this->dni) {
+			foreach ($usuario_nuevo as $campo=>$valor) {
+				$$campo = $valor;
+			}
+			$this->query = "
+			INSERT INTO datos_usuario (apellido_1, apellido_2, ciudad, contrasenia, direccion, dni, email, fecha_nacimiento, nombre, telefono, tipo_usuario, usuario, url_imagen) 
+			VALUES ('$apellido_1', '$apellido_2', '$ciudad', '$contrasenia','$direccion', '$dni', '$email', '$fecha_nacimiento', '$nombre', '$telefono', '$tipo_usuario', '$usuario', 'img/fotos_perfil/default.jpg')
+			";
+			$this->execute_single_query();
+			return 'Ok';
+		} else {
+			$msg = 'El usuario que intentas dar de alta ya existe';
+			return $msg;
+		}
+		
 	}
 
 	public function gestionar_solicitud($accion) {

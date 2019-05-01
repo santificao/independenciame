@@ -17,17 +17,36 @@ $email = $_POST['email'];
 
 if($tipo == 'paciente') {
     $tipo = 'C';
+    $grado = $_POST['grado'];
 } else {
     $tipo = 'B';
+    $tipo_asistente = $_POST['tipoAsistente'];
+    if ($tipo_asistente == 2) {
+        $formacion = $_POST['formacion'];
+    }
 }
 $usuario = $_POST['usuario'];
 $contrasenia = $_POST['contrasenia'];
 
-$usuarioGuardar = array('nombre' => $nombre, 'apellido_1' => $apellido1, 'apellido_2' => $apellido2, 'fecha_nacimiento' => $fecha, 'ciudad' => $ciudad, 'direccion' => $direccion, 'telefono' => $telefono, 'email' => $email, 'dni' => $dni, 'usuario' => $usuario, 'contrasenia' => $contrasenia, 'tipo_usuario' => $tipo);
+$usuario_guardar = array('nombre' => $nombre, 'apellido_1' => $apellido1, 'apellido_2' => $apellido2, 'fecha_nacimiento' => $fecha, 'ciudad' => $ciudad, 'direccion' => $direccion, 'telefono' => $telefono, 'email' => $email, 'dni' => $dni, 'usuario' => $usuario, 'contrasenia' => $contrasenia, 'tipo_usuario' => $tipo);
 
-$usuario = new Usuario();
+$user = new Usuario();
+$msg = $user->set($usuario_guardar);
 
-$usuario->set($usuarioGuardar);
-
+if ($msg == 'Ok') {
+    $user = new Usuario();
+    $user->get($usuario, $contrasenia);
+    
+    if ($tipo == 'C') {
+        $paciente = new Paciente();
+        $paciente->set_grado($user->id_usuario, $grado);
+    } else {
+        $trabajador = new Trabajador();
+        $trabajador->set_tipo($user->id_usuario, $tipo_asistente, $formacion);
+    }
+    echo $msg;
+} else {
+    echo $msg;
+}
 
 ?>

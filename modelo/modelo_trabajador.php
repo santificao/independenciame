@@ -4,7 +4,8 @@ class Trabajador extends Usuario {
 
     public $id_usuario;
     public $tipo_trabajador;
-    public $visible;
+	public $visible;
+	public $formacion;
 
     public function datos_trabajador($id_usuario) {
 		$this->query = "
@@ -20,6 +21,14 @@ class Trabajador extends Usuario {
 				$this->$propiedad = $valor;
 			}
         } 
+	}
+
+	public function set_tipo($id, $tipo_trabajador, $formacion) {
+		$this->query = "
+        INSERT INTO trabajador (id_usuario, tipo_trabajador, visible, formacion) 
+        VALUES ($id, $tipo_trabajador, 1, '$formacion')
+		";
+		$this->execute_single_query();
 	}
 
 	public function get_todos() {

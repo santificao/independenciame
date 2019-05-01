@@ -20,7 +20,7 @@
                     $mensajes = $mensaje->get_cuantos_mensajes_nuevos($_SESSION["usuario"]["id"]);
 
                     if ($mensajes > 0 ) {
-                        echo "<a class='enlace' href='index.php?p=3'>$mensajes</a>";
+                        echo "<a class='enlace' href='index.php?p=2'>$mensajes</a>";
                     } else {
                         echo $mensajes;
                     }

@@ -20,5 +20,13 @@ class Paciente extends Usuario {
 			}
         } 
 	}
+
+	public function set_grado($id, $grado) {
+		$this->query = "
+        INSERT INTO paciente (id_usuario, grado_dependencia) 
+        VALUES ($id, $grado)
+		";
+		$this->execute_single_query();
+	}
 }
 ?>

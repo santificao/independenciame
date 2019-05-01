@@ -64,6 +64,7 @@ switch($usuario->tipo_usuario) {
                 break;
             case 2:
                 $tipo = "Trabajador";
+                $formacion = $trabajador->formacion;
                 break;
         }
         break;
@@ -115,6 +116,9 @@ $pdf->Cell(0, 7, 'Ciudad: '.$usuario->ciudad, 0, 1, "L");
 $pdf->Cell(0, 7, 'Dirección: '.$usuario->direccion, 0, 1, "L");
 $pdf->Cell(0, 7, 'Tipo de cuenta: '.$tipo_usuario, 0, 1, "L");
 $pdf->Cell(0, 7, 'Tipo de usuario: '.$tipo, 0, 1, "L");
+if(isset($formacion)) {
+    $pdf->Cell(0, 7, 'Formación: '.$formacion, 0, 1, "L");
+}
 
 
 
