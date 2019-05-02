@@ -1,12 +1,12 @@
 <?php
-require("modelo/db_abstract_model.php");
-require("modelo/modelo_usuario.php");
-require("modelo/modelo_trabajador.php");
-require("modelo/modelo_solicitud.php");
-require("modelo/modelo_paciente.php");
-require("modelo/modelo_mensaje.php");
-require("libreria_de_clases/utilidades.php");
-require("libreria_de_clases/sesion.php");
+require_once("modelo/db_abstract_model.php");
+require_once("modelo/modelo_usuario.php");
+require_once("modelo/modelo_trabajador.php");
+require_once("modelo/modelo_solicitud.php");
+require_once("modelo/modelo_paciente.php");
+require_once("modelo/modelo_mensaje.php");
+require_once("libreria_de_clases/utilidades.php");
+require_once("libreria_de_clases/sesion.php");
 
 session_start();
 
