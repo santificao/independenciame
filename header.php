@@ -44,8 +44,11 @@ if (isset($_POST["inicia_sesion"])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/lightbox.min.css">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <meta name="description" content="Independénciame es un sitio creado para ayudar a personas en situación de dependencia a ponerse en contacto con asistentes voluntarios y profesionales que les ayuden a superar su vida diaria" />
     <title>IndependenciaMe</title>
 </head>
 
