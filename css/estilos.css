@@ -426,7 +426,7 @@ main .descripcion:before {
 
 .inicio-sesion {
     background-color: #fff;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

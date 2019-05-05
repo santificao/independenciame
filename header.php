@@ -47,7 +47,7 @@ if (isset($_POST["inicia_sesion"])) {
     <link rel="icon" href="img/favicon.png" type="image/png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <meta name="google-site-verification" content="ZAoHtPP_GL7Gbj5Xxd0JnC2QHzcjCzmjh3XiguUV1d0"/>
     <meta name="description" content="Independénciame es un sitio creado para ayudar a personas en situación de dependencia a ponerse en contacto con asistentes voluntarios y profesionales que les ayuden a superar su vida diaria" />
     <title>IndependenciaMe</title>
 </head>
