@@ -3,6 +3,13 @@
 
 <?php
 
+if (isset($_POST["eliminar_cuenta"])) {
+    $usuario = new Usuario();
+    $usuario->delete($_SESSION["usuario"]["id"]);
+    Sesion::cierra_sesion();
+    header("Location: index.php");
+}
+
 //Bloque de if para realizar una acción y generar una alerta de éxito u error
 if (isset($_POST["modificar_usuario"])) {
     $ciudad = $_POST["ciudad"];
@@ -132,7 +139,7 @@ if (isset($_POST["modificacion_contrasenia"])) {
     }
 
     ?>
-        <p>TUS DATOS</p> 
+        <p>INFORMACIÓN DE TU PERFIL</p> 
 
         <form class="formulario" action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
             
@@ -168,6 +175,7 @@ if (isset($_POST["modificacion_contrasenia"])) {
 
                 <input class="boton botones-configuracion" type="submit" value="Cambiar foto de perfil" name="modificacion_foto">
 
+                <input class="boton botones-configuracion" type="submit" value="Eliminar cuenta" name="eliminar_cuenta">
             </div>
 
             <input class="boton-submit" type="submit" value="Modificar" name="modificar_usuario">

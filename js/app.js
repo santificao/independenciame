@@ -146,7 +146,7 @@ function validarFormulario(e) {
     var dniCorrecto = comprobarDni(dni);
     var telefonoCorrecto = comprobarTelefono(telefono);
     var emailCorrecto = comprobarEmail(email);
-    var contraseniaCorrecta = comprobarContrasenia(contrasenia);
+    var contraseniaCorrecta = comprobarContrasenia(contrasenia, contrasenia2);
 
     $('.error-validacion').remove();
     $('main').append('<div class="error-validacion"></div>');
@@ -157,6 +157,10 @@ function validarFormulario(e) {
     } else {
         if (!camposTexto) {
             $('.error-validacion').append('<p>Datos personales y nombre de usuario obligatorio</p>');
+            validarFormulario = false;
+        }
+        if (!contraseniaCorrecta) {
+            $('.error-validacion').append('<p>La contraseña introducida es menor de 4 caracteres o no coiniciden</p>');
             validarFormulario = false;
         }
         if (!dniCorrecto) {
@@ -246,8 +250,13 @@ function comprobarEmail(email) {
     return false;
 }
 
-function comprobarContrasenia(contrasenia) {
-
+function comprobarContrasenia(contrasenia, contrasenia2) {
+    if (contrasenia.length < 4) {
+        return false;
+    } else if (contrasenia != contrasenia2) {
+        return false;
+    }
+    return true;
 }
 
 //-----> Fin funciones para validar formularios <-----//

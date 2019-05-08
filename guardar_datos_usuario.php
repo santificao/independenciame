@@ -14,6 +14,7 @@ $telefono = $_POST['telefono'];
 $dni = $_POST['dni'];
 $tipo = $_POST['tipo'];
 $email = $_POST['email'];
+$formacion = '';
 
 if($tipo == 'paciente') {
     $tipo = 'C';

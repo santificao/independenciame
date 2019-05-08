@@ -166,16 +166,39 @@ class Usuario extends DBAbstractModel {
 		$this->execute_single_query();
 		}
         
-	/**Hay que corregirlo*/
-	public function delete($cod_prod='') {
+	/**Hay que probar*/
+	public function delete($id='') {
 		$this->query = "
-		DELETE FROM productos
-		WHERE cod_prod = '$cod_prod'
+		DELETE FROM mensaje
+		WHERE id_origen = $id OR id_destino = $id
+		";
+		$this->execute_single_query();
+
+		$this->query = "
+		DELETE FROM solicitud_asistencia
+		WHERE id_paciente = $id OR id_trabajador = $id
+		";
+		$this->execute_single_query();
+
+		$this->query = "
+		DELETE FROM trabajador
+		WHERE id_usuario = $id
+		";
+		$this->execute_single_query();
+
+		$this->query = "
+		DELETE FROM paciente
+		WHERE id_usuario = $id
+		";
+		$this->execute_single_query();
+
+		$this->query = "
+		DELETE FROM datos_usuario
+		WHERE id_usuario = $id
 		";
 		$this->execute_single_query();
 	}
 
-	/**Hay que corregirlo*/
 	public function buscar($nombre) {
 		$this->query = "
 			SELECT * FROM datos_usuario

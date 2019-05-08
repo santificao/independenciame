@@ -65,7 +65,7 @@
             <h2>Mis conversaciones</h2>
             <?php
             if (empty($listado_mensajes)) {
-                echo "No tienes ninguna conversación";
+                echo "<p class='alerta-mensajes'>No tienes ninguna conversación</p>";
             } else {
                 foreach($listado_mensajes as $mensaje) {
                     $usuario = new Usuario();
