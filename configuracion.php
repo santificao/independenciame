@@ -3,13 +3,26 @@
 
 <?php
 
-if (isset($_POST["eliminar_cuenta"])) {
+if (isset($_POST["confirmar_eliminar_cuenta"])) {
     $usuario = new Usuario();
     $usuario->delete($_SESSION["usuario"]["id"]);
     Sesion::cierra_sesion();
     header("Location: index.php");
 }
 
+if (isset($_POST["eliminar_cuenta"])) {
+?>
+<article class='cierre-sesion contenido'>
+
+<form class="formulario" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
+    <input class="boton-submit boton-extrecho aceptar" type="submit" value="Si, seguro" name="confirmar_eliminar_cuenta">
+    <input class="boton-submit boton-extrecho rechazar" type="submit" value="No, mejor no" name="no_cerrar">
+</form>
+
+</article>
+
+<?php
+} else {
 //Bloque de if para realizar una acción y generar una alerta de éxito u error
 if (isset($_POST["modificar_usuario"])) {
     $ciudad = $_POST["ciudad"];
@@ -174,8 +187,13 @@ if (isset($_POST["modificacion_contrasenia"])) {
                 <input class="boton botones-configuracion" type="submit" value="Cambiar contraseña" name="modificacion_contrasenia">
 
                 <input class="boton botones-configuracion" type="submit" value="Cambiar foto de perfil" name="modificacion_foto">
-
+                <?php
+                    if($_SESSION["usuario"]["tipo_usuario"] != "A") {
+                    ?>
                 <input class="boton botones-configuracion" type="submit" value="Eliminar cuenta" name="eliminar_cuenta">
+                    <?php
+                        }
+                    ?>
             </div>
 
             <input class="boton-submit" type="submit" value="Modificar" name="modificar_usuario">
@@ -184,6 +202,7 @@ if (isset($_POST["modificacion_contrasenia"])) {
     </div>
     <?php
 
+}
 }
 ?>
 </article>

@@ -22,7 +22,7 @@ include("libreria_de_clases/utilidades.php");
             $listado[$pos++] = Array ("nombre" => "tipo_asistencia" ,"tipo" => $tipo_asistencia);
             foreach ($trabajadores as $trabajador){
                 //Lo primero comprobar si está visible
-                if ($trabajador["visible"] == 1) {
+                if ($trabajador["visible"] == 1 && $trabajador["gestionado"] == 1) {
                     //Comprobamos que se cumplan requisitos
                     $tipo_trabajador = $trabajador["tipo_trabajador"];
                     if (($tipo_asistencia <= 2) || $tipo_asistencia > 2 && $tipo_trabajador != 1)   {

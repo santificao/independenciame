@@ -11,7 +11,7 @@
 <article class='cierre-sesion contenido'>
 
     <form class="formulario" action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
-        <h2>¿Seguro que desea salir?</h2>
+        <h2>¿Seguro que deseas salir?</h2>
 
         <input class="boton-submit boton-extrecho aceptar" type="submit" value="Salir" name="cerrar">
         <input class="boton-submit boton-extrecho rechazar" type="submit" value="No" name="no_cerrar">
